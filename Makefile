@@ -2,7 +2,7 @@ NAME = push_swap
 
 HEAD = push_swap.h
 
-SRC = ./main.c ./check.c ./push.c ./swap.c ./rotate.c ./rv_rotate.c ./add_remove.c ./get_nbr.c ./sort.c
+SRC = ./src/main.c ./src/check.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rv_rotate.c ./src/add_remove.c ./src/get_nbr.c ./src/sort.c ./src/handle_sort.c ./src/handle_sort2.c
 
 LIBFT = ./libft/libft.a
 

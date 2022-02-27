@@ -30,5 +30,16 @@ void    sort_medium(stack **a, stack **b);
 void    sort_big(stack **a, stack **b);
 int		is_sorted(stack **a);
 
+int		handle_sort_a(stack **s, int div, int aux);
+int		top(stack *s, int medium_pos, int first, int last);
+int		bottom(stack *s, int medium_pos, int first, int last);
+int		find_top(stack *s, int first, int last);
+int		find_bottom(stack *s, int first, int last);
+
+void	handle_sort_b(stack **s);
+void	re_push(stack **s);
+int 	top_b(stack *s, int n);
+int 	bottom_b(stack *s, int n);
+
 #endif
 

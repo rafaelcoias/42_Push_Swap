@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void handle_medium_b(stack **s)
+void handle_sort_b(stack **s)
 {
     int smaller;
 

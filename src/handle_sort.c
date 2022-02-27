@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int handle_medium_a(stack **s, int div, int aux)
+int handle_sort_a(stack **s, int div, int aux)
 {
     int medium;
 

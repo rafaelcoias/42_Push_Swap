@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     if (!a || !b)
         return (0);
     a = stack_a(&a, argv, argc);
-    if (is_sorted(&a))
+    if (is_sorted(a))
         exit(0);
     if (argc <= 4)
         sort_three(&a);
