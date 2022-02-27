@@ -25,6 +25,8 @@ ${NAME}: ${OBJ}
 	${AR} ${NAME} ${OBJ}
 	${RANLIB} ${NAME}
 
+# RULES #
+
 all: ${NAME}
 
 clean: 
@@ -39,4 +41,4 @@ norm:
 	norminette -R CheckForbiddenSourceHeader *.c
 	norminette -R CheckDefine *.h
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm

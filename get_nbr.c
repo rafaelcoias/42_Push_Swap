@@ -30,3 +30,31 @@ int get_size(stack *s)
 	}
 	return (i);
 }
+
+int get_bigger(stack *s)
+{
+    int	i;
+
+	i = s->nbr;
+	while (s)
+	{
+		s = s->next;
+		if (s && s->nbr > i)
+			i = s->nbr;
+	}
+	return (i);
+}
+
+int	get_smaller(stack *s)
+{
+	    int	i;
+
+	i = s->nbr;
+	while (s)
+	{
+		s = s->next;
+		if (s && s->nbr < i)
+			i = s->nbr;
+	}
+	return (i);
+}
