@@ -1,9 +1,9 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 stack *ft_add_bottom(stack **s, stack *new)
 {
     if (!s)
-		return ;
+		return (NULL);
 	new->next = *s;
 	*s = new;
 }
@@ -13,7 +13,7 @@ stack *ft_add_top(stack **s, stack *new)
     stack	*aux;
 
 	if (!s)
-		return ;
+		return (NULL);
 	if (!(*s))
 		*s = new;
 	else

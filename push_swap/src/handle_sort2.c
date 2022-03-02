@@ -1,10 +1,10 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void handle_sort_b(stack **s)
 {
     int smaller;
 
-    if (get_size(b) < 2)
+    if (get_size(*s) < 2)
         return ;
     smaller = get_smaller(*s);
     if (top_b(get_top(*s), smaller) <= bottom_b(get_bottom(*s), smaller))

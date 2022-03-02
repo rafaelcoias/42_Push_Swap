@@ -1,39 +1,40 @@
 NAME = push_swap
 
-HEAD = push_swap.h
+HEAD = ./include/push_swap.h
 
 SRC = ./src/main.c ./src/check.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rv_rotate.c ./src/add_remove.c ./src/get_nbr.c ./src/sort.c ./src/handle_sort.c ./src/handle_sort2.c
 
-LIBFT = ./libft/libft.a
+LIBFT = $(LIBFT_PATH)/libft.a
+
+LIBFT_PATH = ./include/libft
+
+MAKE_LIBFT = cd ./include/libft && make all
 
 OBJ = ${SRC:.c=.o}
 
 GCC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 RM = rm -f
 
-AR = ar rc
-
-RANLIB = ranlib 
-
-.c.o:
-	${GCC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${HEAD}
-
 ${NAME}: ${OBJ}
-	${AR} ${NAME} ${OBJ}
-	${RANLIB} ${NAME}
+	@${MAKE_LIBFT} -s
+	@$(GCC) $(CFLAGS) -o $(NAME) $(OBJ) -L $(LIBFT_PATH) -lft
+	@echo " === push_swap created === "
 
 # RULES #
 
 all: ${NAME}
 
-clean: 
+clean:
+	@cd ./include/libft && make clean -s
 	${RM} ${OBJ}
 
 fclean: clean
+	@cd ./include/libft && make fclean -s
 	${RM} ${NAME}
+	@echo " === push_swap removed === "
 
 re:	fclean all
 

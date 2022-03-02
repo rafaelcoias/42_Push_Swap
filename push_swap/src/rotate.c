@@ -1,10 +1,10 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void rotate(stack **s)
 {
     if (!(s && get_size(*s) > 1))
         return;
-    *s = ft_add_bottom(get_top(*s));
+    *s = ft_add_bottom(s, get_top(*s));
     while ((*s)->next)
         *s = (*s)->next;
     *s = ft_rm(*s);

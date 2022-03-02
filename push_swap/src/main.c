@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static stack *ft_add(int n, stack *aux)
 {

@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int handle_sort_a(stack **s, int div, int aux)
 {

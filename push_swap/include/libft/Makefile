@@ -33,7 +33,7 @@ AR = ar rc
 RANLIB = ranlib
 
 .c.o:
-		${GCC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${HEAD}
+	${GCC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${HEAD}
 
 ${NAME}: ${OBJ}
 	${AR} ${NAME} ${OBJ}
@@ -57,3 +57,5 @@ re:	fclean all
 norm:	
 	norminette -R CheckForbiddenSourceHeader *.c
 	norminette -R CheckDefine *.h
+
+.PHONY: all clean fclean re norm

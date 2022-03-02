@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void rv_rotate(stack **s)
 {
@@ -7,7 +7,7 @@ static void rv_rotate(stack **s)
     if (!(s && get_size(*s) > 1))
         return;
     aux = (*s)->next;
-    aux = ft_add_top(get_bottom(*s));
+    aux = ft_add_top(s, get_bottom(*s));
     *s = aux;
 }
 

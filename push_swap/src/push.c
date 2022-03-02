@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void push(stack **a, stack **b)
 {
@@ -7,7 +7,7 @@ static void push(stack **a, stack **b)
     if (!(b && get_size(*b) > 0))
         return ;
     top_b = get_top(*b);
-    *a = ft_add_top(top_b);
+    *a = ft_add_top(a, top_b);
 }
 
 void    do_pa(stack **a, stack **b)

@@ -1,9 +1,9 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void send_message()
 {
-    ft_putstr_fd("Error\n", 1);
-    exit();
+    write(1, "Error\n", 6);
+    exit(0);
 }
 
 static int check_arg(char *arg)
@@ -37,7 +37,7 @@ void check_args(int argc, char **argv)
 
     i = 1;
     if (argc < 3)
-        exit();
+        exit(0);
     while (i != argc)
     {
         if (!check_arg(argv[i]))

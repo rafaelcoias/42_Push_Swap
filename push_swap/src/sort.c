@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void sort_three(stack **s)
 {
@@ -29,14 +29,14 @@ void sort_small(stack **a, stack **b)
 
     top_b = NULL;
     top_a = NULL;
-    do_pb();
-    do_pb();
+    do_pb(a, b);
+    do_pb(a, b);
     sort_three(a);
     sort_three(b);
-    while (!is_sorted(*a) || get_size(**b) > 0)
+    while (!is_sorted(*a) || get_size(*b) > 0)
     {
-        top_b = get_top(b);
-        top_a = get_top(a);
+        top_b = get_top(*b);
+        top_a = get_top(*a);
         if (top_b->nbr > top_a->nbr)
             do_rra(a);
         else
@@ -59,9 +59,9 @@ void sort_medium(stack **a, stack **b)
     aux = div;
     while (aux < bigger)
     {
-        while (handle_medium_a(a, div, aux))
+        while (handle_sort_a(a, div, aux))
         {
-            handle_medium_b(b);
+            handle_sort_b(b);
             do_pb(a, b);
         }
         aux = aux + div;
@@ -86,9 +86,9 @@ void sort_big(stack **a, stack **b)
     aux = div;
     while (aux < bigger)
     {
-        while (handle_big_a(a, div, aux))
+        while (handle_sort_a(a, div, aux))
         {
-            handle_big_b(b);
+            handle_sort_b(b);
             do_pb(a, b);
         }
         aux = aux + div;

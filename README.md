@@ -19,10 +19,17 @@ that sorts the integers received as arguments.
 
 ### C Structures
 
+A struct in the C programming language (and many derivatives) is a composite data type (or record) declaration that defines a physically grouped list of variables under one name in a block of memory.
 
+That allows the different variables to be accessed via a single pointer or by the struct declared name.
+
+Learn more <a href="https://techvidvan.com/tutorials/c-typedef-with-examples/">here</a>. <br>
+Learn more <a href="https://www.tutorialspoint.com/cprogramming/c_structures.htm">here</a>.
 
 <hr>
 
 I hope you found it interesting!
+
+Learn how to do the push_swap algorithm <a href="https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a">here</a>.
 
 And if you are going to do push_swap, I wish you good luck and hope that you learned something here!
