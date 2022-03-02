@@ -23,8 +23,7 @@ A struct in the C programming language (and many derivatives) is a composite dat
 
 That allows the different variables to be accessed via a single pointer or by the struct declared name.
 
-Learn more <a href="https://techvidvan.com/tutorials/c-typedef-with-examples/">here</a>. <br>
-Learn more <a href="https://www.tutorialspoint.com/cprogramming/c_structures.htm">here</a>.
+Learn more <a href="https://techvidvan.com/tutorials/c-typedef-with-examples/">here</a> with some examples <a href="https://www.tutorialspoint.com/cprogramming/c_structures.htm">here</a>.
 
 <hr>
 
