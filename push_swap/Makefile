@@ -38,8 +38,10 @@ fclean: clean
 
 re:	fclean all
 
-norm:	
-	norminette -R CheckForbiddenSourceHeader *.c
-	norminette -R CheckDefine *.h
+norm:
+	@echo "======= norm libft ======="
+	@cd ./include/libft && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
+	@echo "======= norm push_swap ======="
+	@cd ./src && norminette -R CheckForbiddenSourceHeader *.c && cd ../include && norminette -R CheckDefine *.h 
 
 .PHONY: all clean fclean re norm

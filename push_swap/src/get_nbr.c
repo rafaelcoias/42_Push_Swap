@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_nbr.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 15:12:29 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/03/04 15:18:06 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-stack   *get_bottom(stack *s)
+t_stack	*get_bottom(t_stack *s)
 {
-    if (s == NULL)
+	if (s == NULL)
 		return (NULL);
 	while (s->last)
 		s = s->last;
 	return (s);
 }
 
-stack   *get_top(stack *s)
+t_stack	*get_top(t_stack *s)
 {
 	if (s == NULL)
 		return (NULL);
@@ -18,9 +30,9 @@ stack   *get_top(stack *s)
 	return (s);
 }
 
-int get_size(stack *s)
+int	get_size(t_stack *s)
 {
-    int	i;
+	int	i;
 
 	i = 0;
 	while (s)
@@ -31,9 +43,9 @@ int get_size(stack *s)
 	return (i);
 }
 
-int get_bigger(stack *s)
+int	get_bigger(t_stack *s)
 {
-    int	i;
+	int	i;
 
 	i = s->nbr;
 	while (s)
@@ -45,9 +57,9 @@ int get_bigger(stack *s)
 	return (i);
 }
 
-int	get_smaller(stack *s)
+int	get_smaller(t_stack *s)
 {
-	    int	i;
+	int	i;
 
 	i = s->nbr;
 	while (s)

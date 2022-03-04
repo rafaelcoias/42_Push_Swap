@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 16:05:19 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/03/04 16:07:56 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -8,7 +20,7 @@ typedef struct s_stack
 	struct s_stack	*last;
 	int				nbr;
 	struct s_stack	*next;
-}	stack;
+}	t_stack;
 
 /* PROGRAM INIT */
 
@@ -17,55 +29,54 @@ void	check_args(int argc, char **argv);
 
 /* MOVES */
 
-void	do_pa(stack **a, stack **b);
-void	do_pb(stack **a, stack **b);
-void	do_sa(stack **s);
-void	do_sb(stack **s);
-void	do_ss(stack **a, stack **b);
-void	do_ra(stack **s);
-void	do_rb(stack **s);
-void	do_rr(stack **a, stack **b);
-void	do_ra(stack **s);
-void	do_rra(stack **s);
-void	do_rrb(stack **s);
-void	do_rrr(stack **a, stack **b);
+void	do_pa(t_stack **a, t_stack **b);
+void	do_pb(t_stack **a, t_stack **b);
+void	do_sa(t_stack **s);
+void	do_sb(t_stack **s);
+void	do_ss(t_stack **a, t_stack **b);
+void	do_ra(t_stack **s);
+void	do_rb(t_stack **s);
+void	do_rr(t_stack **a, t_stack **b);
+void	do_ra(t_stack **s);
+void	do_rra(t_stack **s);
+void	do_rrb(t_stack **s);
+void	do_rrr(t_stack **a, t_stack **b);
 
 /* GET FUNCTIONS */
 
-stack   *get_bottom(stack *s);
-stack   *get_top(stack *s);
-int 	get_size(stack *s);
-int 	get_bigger(stack *s);
-int		get_smaller(stack *s);
+t_stack	*get_bottom(t_stack *s);
+t_stack	*get_top(t_stack *s);
+int		get_size(t_stack *s);
+int		get_bigger(t_stack *s);
+int		get_smaller(t_stack *s);
 
 /* ADD & REMOVE */
 
-stack *ft_add_bottom(stack **s, stack *new);
-stack *ft_add_top(stack **s, stack *new);
-stack *ft_rm(stack *s);
+t_stack	*ft_add_bottom(t_stack **s, t_stack *new);
+t_stack	*ft_add_top(t_stack **s, t_stack *new);
+t_stack	*ft_rm(t_stack *s);
 
 /* SORT */
 
-void    sort_three(stack **a);
-void    sort_small(stack **a, stack **b);
-void    sort_medium(stack **a, stack **b);
-void    sort_big(stack **a, stack **b);
-int		is_sorted(stack *s);
+void	sort_three(t_stack **a);
+void	sort_small(t_stack **a, t_stack **b);
+void	sort_medium(t_stack **a, t_stack **b);
+void	sort_big(t_stack **a, t_stack **b);
+int		is_sorted(t_stack **s);
 
 /* SORT A */
 
-int		handle_sort_a(stack **s, int div, int aux);
-int		top(stack *s, int medium_pos, int first, int last);
-int		bottom(stack *s, int medium_pos, int first, int last);
-int		find_top(stack *s, int first, int last);
-int		find_bottom(stack *s, int first, int last);
+int		handle_sort_a(t_stack **s, int div, int aux);
+int		top(t_stack *s, int medium_pos, int first, int last);
+int		bottom(t_stack *s, int medium_pos, int first, int last);
+int		find_top(t_stack *s, int first, int last);
+int		find_bottom(t_stack *s, int first, int last);
 
 /* SORT B */
 
-void	handle_sort_b(stack **s);
-void	re_push(stack **s);
-int 	top_b(stack *s, int n);
-int 	bottom_b(stack *s, int n);
+void	handle_sort_b(t_stack **s);
+void	re_push(t_stack **s);
+int		top_b(t_stack *s, int n);
+int		bottom_b(t_stack *s, int n);
 
 #endif
-
