@@ -50,6 +50,30 @@ static t_stack	*t_stack_a(char **argv, int argc)
 	return (first);
 }
 
+static void	free_stack(t_stack **s)
+{
+	t_stack	*this;
+	t_stack	*next;
+
+	if (!s)
+		return ;
+	this = *s;
+	while (this)
+	{
+		next = this->next;
+		free(this);
+		this = next;
+	}
+	*s = NULL;
+}
+
+void	sort_two(t_stack **a)
+{
+	if (!is_sorted(a))
+		do_sa(a);
+	return ;
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -61,15 +85,17 @@ int	main(int argc, char **argv)
 	a = t_stack_a(argv, argc);
 	if (is_sorted(&a))
 		exit(0);
-	if (argc <= 4)
+	if (argc == 3)
+		sort_two(&a);
+	else if (argc == 4)
 		sort_three(&a);
-	else if (argc <= 6)
-		sort_small(&a, &b);
+	else if (argc == 6)
+		sort_five(&a, &b);
 	else if (argc <= 101)
 		sort_medium(&a, &b);
 	else if (argc <= 501)
 		sort_big(&a, &b);
-	free(a);
-	free(b);
+	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }

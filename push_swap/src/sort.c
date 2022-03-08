@@ -38,7 +38,7 @@ void	sort_three(t_stack **s)
 	}
 }
 
-void	sort_small(t_stack **a, t_stack **b)
+void	sort_five(t_stack **a, t_stack **b)
 {
 	t_stack	*top_b;
 	t_stack	*top_a;
@@ -48,7 +48,7 @@ void	sort_small(t_stack **a, t_stack **b)
 	do_pb(a, b);
 	do_pb(a, b);
 	sort_three(a);
-	sort_three(b);
+	sort_two(b);
 	while (!is_sorted(a) || get_size(*b) > 0)
 	{
 		top_b = get_top(*b);
@@ -123,9 +123,8 @@ int	is_sorted(t_stack **s)
 	aux = *s;
 	while (aux)
 	{
-		if (aux->next)
-			if (aux->next->nbr > aux->nbr)
-				return (0);
+		if (aux->next && aux->next->nbr > aux->nbr)
+			return (0);
 		aux = aux->next;
 	}
 	return (1);

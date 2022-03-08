@@ -58,8 +58,9 @@ t_stack	*ft_rm(t_stack *s);
 
 /* SORT */
 
+void	sort_two(t_stack **a);
 void	sort_three(t_stack **a);
-void	sort_small(t_stack **a, t_stack **b);
+void	sort_five(t_stack **a, t_stack **b);
 void	sort_medium(t_stack **a, t_stack **b);
 void	sort_big(t_stack **a, t_stack **b);
 int		is_sorted(t_stack **s);
