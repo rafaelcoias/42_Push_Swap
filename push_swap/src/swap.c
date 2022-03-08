@@ -14,17 +14,22 @@
 
 static void	swap(t_stack **s)
 {
-	t_stack	*top;
-	t_stack	*top2;
+	int		top;
+	int		top2;
+	t_stack	*aux;
 
 	if (!(s && get_size(*s) > 1))
 		return ;
-	top = get_top(*s);
-	top2 = top->last;
-	while ((*s)->next)
-		*s = (*s)->next;
-	(*s)->last = top;
-	*s = top2;
+	top = get_top(*s)->nbr;
+	top2 = get_top(*s)->last->nbr;
+	aux = *s;
+	while ((aux)->next)
+		aux = (aux)->next;
+	(aux)->last->nbr = top;
+	aux->nbr = top2;
+	while ((aux)->last)
+		aux = (aux)->last;
+	*s = aux;
 }
 
 void	do_sa(t_stack **s)

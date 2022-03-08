@@ -80,4 +80,8 @@ void	re_push(t_stack **s);
 int		top_b(t_stack *s, int n);
 int		bottom_b(t_stack *s, int n);
 
+/* PRINT STACK */
+
+void	print_stack(t_stack **s);
+
 #endif

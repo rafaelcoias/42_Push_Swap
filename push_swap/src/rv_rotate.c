@@ -26,13 +26,13 @@ static void	rv_rotate(t_stack **s)
 void	do_rra(t_stack **s)
 {
 	rv_rotate(s);
-	write(1, "rra\n", 3);
+	write(1, "rra\n", 4);
 }
 
 void	do_rrb(t_stack **s)
 {
 	rv_rotate(s);
-	write(1, "rrb\n", 3);
+	write(1, "rrb\n", 4);
 }
 
 void	do_rrr(t_stack **a, t_stack **b)

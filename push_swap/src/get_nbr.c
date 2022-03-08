@@ -14,7 +14,7 @@
 
 t_stack	*get_bottom(t_stack *s)
 {
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	while (s->last)
 		s = s->last;
@@ -23,7 +23,7 @@ t_stack	*get_bottom(t_stack *s)
 
 t_stack	*get_top(t_stack *s)
 {
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	while (s->next)
 		s = s->next;

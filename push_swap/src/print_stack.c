@@ -1,46 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   print_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 15:53:11 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/03/04 15:53:56 by rade-sar         ###   ########.fr       */
+/*   Created: 2022/03/08 18:42:20 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/03/08 22:08:57 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	rotate(t_stack **s)
+void	print_stack(t_stack **s)
 {
-	t_stack	*tmp;
-	t_stack	*tmp2;
+	t_stack	*aux;
 
-	tmp = *stack;
-	tmp2 = (*stack)-> next;
-	while ((*stack)-> next)
-		(*stack) = (*stack)-> next;
-	(*stack)-> next = tmp;
-	*stack = tmp2;
-	tmp -> next = NULL;
-}
-
-void	do_ra(t_stack **s)
-{
-	rotate(s);
-	write(1, "ra\n", 3);
-}
-
-void	do_rb(t_stack **s)
-{
-	rotate(s);
-	write(1, "rb\n", 3);
-}
-
-void	do_rr(t_stack **a, t_stack **b)
-{
-	rotate(a);
-	rotate(b);
-	write(1, "rr\n", 3);
+	if (!s || !(*s))
+		return ;
+	aux = get_top(*s);
+	ft_putstr_fd("\nStack:\n\n", 1);
+	while (aux)
+	{
+		ft_putnbr_fd(aux->nbr, 1);
+		ft_putchar_fd('\n', 1);
+		aux = aux->last;
+	}
+	ft_putstr_fd("-\na\n", 1);
 }

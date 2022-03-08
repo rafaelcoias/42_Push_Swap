@@ -30,7 +30,7 @@ static t_stack	*t_stack_a(char **argv, int argc)
 	int		i;
 	t_stack	*last;
 	t_stack	*s;
-	t_stack *first;
+	t_stack	*first;
 
 	i = 1;
 	last = NULL;
@@ -42,7 +42,7 @@ static t_stack	*t_stack_a(char **argv, int argc)
 	while (i != argc)
 	{
 		s->next = ft_add(ft_atol(argv[i]), last);
-		last = s;
+		last = s->next;
 		s = s->next;
 		i++;
 	}
@@ -85,6 +85,8 @@ int	main(int argc, char **argv)
 	a = t_stack_a(argv, argc);
 	if (is_sorted(&a))
 		exit(0);
+	print_stack(&a);
+	ft_putstr_fd("\nOperations:\n\n", 1);
 	if (argc == 3)
 		sort_two(&a);
 	else if (argc == 4)
@@ -95,6 +97,7 @@ int	main(int argc, char **argv)
 		sort_medium(&a, &b);
 	else if (argc <= 501)
 		sort_big(&a, &b);
+	print_stack(&a);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
