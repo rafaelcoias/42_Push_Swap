@@ -22,12 +22,12 @@ void	handle_sort_b(t_stack **s)
 	if (top_b(get_top(*s), smaller) <= bottom_b(get_bottom(*s), smaller))
 	{
 		while (get_top(*s)->nbr != smaller)
-			do_rb(s);
+			do_rrb(s);
 	}
 	else
 	{
 		while (get_top(*s)->nbr != smaller)
-			do_rrb(s);
+			do_rb(s);
 	}
 }
 
@@ -58,7 +58,7 @@ int	top_b(t_stack *s, int n)
 		if (s->nbr == n)
 			return (i);
 		i++;
-		s = s->last;
+		//iterar s
 	}
 	return (i);
 }

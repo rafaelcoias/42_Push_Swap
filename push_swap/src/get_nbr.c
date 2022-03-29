@@ -12,15 +12,6 @@
 
 #include "../include/push_swap.h"
 
-t_stack	*get_bottom(t_stack *s)
-{
-	if (!s)
-		return (NULL);
-	while (s->last)
-		s = s->last;
-	return (s);
-}
-
 t_stack	*get_top(t_stack *s)
 {
 	if (!s)
@@ -43,21 +34,23 @@ int	get_size(t_stack *s)
 	return (i);
 }
 
-int	get_bigger(t_stack *s)
+int	get_biggest(t_stack *s)
 {
 	int	i;
-
+	
+	if (!s)
+		return (0);
 	i = s->nbr;
-	while (s)
+	while (s->next)
 	{
 		s = s->next;
-		if (s && s->nbr > i)
+		if (s->nbr > i)
 			i = s->nbr;
 	}
 	return (i);
 }
 
-int	get_smaller(t_stack *s)
+int	get_smallest(t_stack *s)
 {
 	int	i;
 

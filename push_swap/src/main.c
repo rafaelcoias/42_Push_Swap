@@ -12,14 +12,13 @@
 
 #include "../include/push_swap.h"
 
-static t_stack	*ft_add(int n, t_stack *last)
+static t_stack	*ft_add(int n)
 {
 	t_stack	*new;
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
-	new->last = last;
 	new->nbr = n;
 	new->next = NULL;
 	return (new);
@@ -28,21 +27,17 @@ static t_stack	*ft_add(int n, t_stack *last)
 static t_stack	*t_stack_a(char **argv, int argc)
 {
 	int		i;
-	t_stack	*last;
 	t_stack	*s;
 	t_stack	*first;
 
 	i = 1;
-	last = NULL;
 	s = NULL;
-	first = ft_add(ft_atol(argv[i++]), last);
+	first = ft_add(ft_atol(argv[i++]));
 	first->next = s;
 	s = first;
-	last = s;
 	while (i != argc)
 	{
-		s->next = ft_add(ft_atol(argv[i]), last);
-		last = s->next;
+		s->next = ft_add(ft_atol(argv[i]));
 		s = s->next;
 		i++;
 	}
@@ -67,13 +62,6 @@ static void	free_stack(t_stack **s)
 	*s = NULL;
 }
 
-void	sort_two(t_stack **a)
-{
-	if (!is_sorted(a))
-		do_sa(a);
-	return ;
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -84,20 +72,8 @@ int	main(int argc, char **argv)
 	check_args(argc, argv);
 	a = t_stack_a(argv, argc);
 	if (is_sorted(&a))
-		exit(0);
-	print_stack(&a);
-	ft_putstr_fd("\nOperations:\n\n", 1);
-	if (argc == 3)
-		sort_two(&a);
-	else if (argc == 4)
-		sort_three(&a);
-	else if (argc == 6)
-		sort_five(&a, &b);
-	else if (argc <= 101)
-		sort_medium(&a, &b);
-	else if (argc <= 501)
-		sort_big(&a, &b);
-	print_stack(&a);
+		return (0);;
+	sort(argc, a, b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

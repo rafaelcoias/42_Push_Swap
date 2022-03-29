@@ -14,13 +14,20 @@
 
 static void	rv_rotate(t_stack **s)
 {
-	t_stack	*aux;
+	t_stack	*first;
+	t_stack	*last;
+	t_stack	*tmp;
 
-	if (!(s && get_size(*s) > 1))
-		return ;
-	aux = (*s)->next;
-	aux = ft_add_top(s, get_bottom(*s));
-	*s = aux;
+	first = *s;
+	tmp = *s;
+	while (tmp -> next)
+		tmp = tmp -> next;
+	last = tmp;
+	*s = last;
+	last -> next = first;
+	while (tmp -> next != last)
+		tmp = tmp -> next;
+	tmp->next = NULL;
 }
 
 void	do_rra(t_stack **s)

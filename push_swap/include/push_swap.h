@@ -17,7 +17,6 @@
 
 typedef struct s_stack
 {
-	struct s_stack	*last;
 	int				nbr;
 	struct s_stack	*next;
 }	t_stack;
@@ -47,18 +46,19 @@ void	do_rrr(t_stack **a, t_stack **b);
 t_stack	*get_bottom(t_stack *s);
 t_stack	*get_top(t_stack *s);
 int		get_size(t_stack *s);
-int		get_bigger(t_stack *s);
-int		get_smaller(t_stack *s);
+int		get_biggest(t_stack *s);
+int		get_smallest(t_stack *s);
 
 /* ADD & REMOVE */
 
-t_stack	*ft_add_bottom(t_stack **s, t_stack *new);
-t_stack	*ft_add_top(t_stack **s, t_stack *new);
-t_stack	*ft_rm(t_stack *s);
+void	ft_add_top(t_stack **s, t_stack *new);
+void	ft_rm_top(t_stack **s);
 
 /* SORT */
 
-void	sort_two(t_stack **a);
+void    sort(int argc, t_stack *a, t_stack *b);
+void	sort_two_a(t_stack **a);
+void	sort_two_b(t_stack **b);
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
 void	sort_medium(t_stack **a, t_stack **b);
@@ -82,6 +82,6 @@ int		bottom_b(t_stack *s, int n);
 
 /* PRINT STACK */
 
-void	print_stack(t_stack **s);
+void	print_stack(t_stack *s, int first);
 
 #endif

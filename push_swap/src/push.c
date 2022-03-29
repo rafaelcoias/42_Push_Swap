@@ -14,22 +14,24 @@
 
 static void	push(t_stack **a, t_stack **b)
 {
+	t_stack	*result;
 	t_stack	*top_b;
 
-	if (!(b && get_size(*b) > 0))
+	if (!b || get_size(*b) == 0)
 		return ;
-	top_b = get_top(*b);
-	*a = ft_add_top(a, top_b);
+	ft_add_top(a, get_top(*b));
+	ft_rm_top(b);
+	
 }
 
 void	do_pa(t_stack **a, t_stack **b)
 {
-	push(b, a);
+	push(a, b);
 	write(1, "pa\n", 3);
 }
 
 void	do_pb(t_stack **a, t_stack **b)
 {
-	push(a, b);
+	push(b, a);
 	write(1, "pb\n", 3);
 }

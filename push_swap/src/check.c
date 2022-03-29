@@ -32,13 +32,12 @@ static int	check_arg(char *arg)
 	return (1);
 }
 
+
 static int	check_duplicate(int argc, char **argv, int j)
 {
 	int	i;
-	int	n;
 
 	i = 1;
-	n = ft_atol(argv[j]);
 	while (i != argc)
 	{
 		if (i != j && argv[i] == argv[j])

@@ -12,36 +12,33 @@
 
 #include "../include/push_swap.h"
 
-t_stack	*ft_add_bottom(t_stack **s, t_stack *new)
+void	ft_add_top(t_stack **s, t_stack *new)
 {
-	if (!s)
-		return (NULL);
-	new->next = *s;
-	*s = new;
-	return (*s);
-}
+	t_stack *result;
 
-t_stack	*ft_add_top(t_stack **s, t_stack *new)
-{
-	t_stack	*aux;
-
-	aux = NULL;
+	result = *s;
 	if (!s)
-		return (NULL);
+		return ;
 	if (!(*s))
-		*s = new;
+		result = new;
 	else
 	{
-		aux = get_top(*s);
-		aux->next = new;
+		while ((*s)->next)
+			*s = (*s)->next;
+		(*s)->next = new;
 	}
-	return (aux);
+	*s = result;
 }
 
-t_stack	*ft_rm(t_stack *s)
+void	ft_rm_top(t_stack **s)
 {
-	if (s)
-		free (s);
-	s = NULL;
-	return (s);
+	t_stack *result;
+
+	result = *s;
+	if (!s || !(*s))
+		return ;
+	while ((*s)->next->next)
+		*s = (*s)->next;
+	(*s)->next = NULL;
+	*s = result;
 }

@@ -21,17 +21,17 @@ int	handle_sort_a(t_stack **s, int div, int aux)
 	m = get_size(*s) / 2;
 	fst = aux - div;
 	lst = aux;
-	if (!(top(get_top(*s), m, fst, lst) || bottom(get_bottom(*s), m, fst, lst)))
+	if (!(top(get_top(*s), m, fst, lst) || bottom(*s, m, fst, lst)))
 		return (0);
-	if (top(get_top(*s), m, fst, lst) <= bottom(get_bottom(*s), m, fst, lst))
+	if (top(get_top(*s), m, fst, lst) <= bottom(*s, m, fst, lst))
 	{
-		while (get_top(*s)->nbr != find_top(get_top(*s), aux - div, aux))
-			do_ra(s);
+		while (get_top(*s)->nbr != find_top(*s, aux - div, aux))
+			do_rra(s);
 	}
 	else
 	{
-		while (get_top(*s)->nbr != find_top(get_top(*s), aux - div, aux))
-			do_rra(s);
+		while (get_top(*s)->nbr != find_top(*s, aux - div, aux))
+			do_ra(s);
 	}
 	return (1);
 }
@@ -46,7 +46,6 @@ int	top(t_stack *s, int m_pos, int first, int last)
 		if (s->nbr >= first && s->nbr <= last)
 			return (i);
 		i++;
-		s = s->last;
 	}
 	return (0);
 }
@@ -69,7 +68,7 @@ int	bottom(t_stack *s, int m_pos, int first, int last)
 int	find_top(t_stack *s, int first, int last)
 {
 	while (!(s->nbr >= first && s->nbr <= last))
-		s = s->last;
+
 	return (s->nbr);
 }
 
