@@ -12,6 +12,22 @@
 
 #include "../include/push_swap.h"
 
+/*
+handle_sort_a function will check if there is, or isn't, 
+any number that corresponds that corresponds to one of
+the range first/last.
+
+If there is, it will rotate or reverse rotate the stack, 
+depending if it is closer to the top or bottom (that is 
+what the bottom function do - if until de middle of the
+stack it cannot find the number, it means the number
+is closer to the top).
+
+It is going to rotate or reverse rotate until the number 
+that we look for is at the top, or bottom (depending on
+what extrem is closer) of the stack.
+*/
+
 int	handle_sort_a(t_stack **s, int div, int aux)
 {
 	int	m;
@@ -21,33 +37,15 @@ int	handle_sort_a(t_stack **s, int div, int aux)
 	m = get_size(*s) / 2;
 	fst = aux - div;
 	lst = aux;
-	if (!(top(get_top(*s), m, fst, lst) || bottom(*s, m, fst, lst)))
+	if (!find(*s, fst, lst))
 		return (0);
-	if (top(get_top(*s), m, fst, lst) <= bottom(*s, m, fst, lst))
-	{
-		while (get_top(*s)->nbr != find_top(*s, aux - div, aux))
+	if (!bottom(*s, m, fst, lst))
+		while (!(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
 			do_rra(s);
-	}
 	else
-	{
-		while (get_top(*s)->nbr != find_top(*s, aux - div, aux))
+		while (!(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
 			do_ra(s);
-	}
 	return (1);
-}
-
-int	top(t_stack *s, int m_pos, int first, int last)
-{
-	int	i;
-
-	i = 1;
-	while (s && i < m_pos)
-	{
-		if (s->nbr >= first && s->nbr <= last)
-			return (i);
-		i++;
-	}
-	return (0);
 }
 
 int	bottom(t_stack *s, int m_pos, int first, int last)
@@ -55,7 +53,7 @@ int	bottom(t_stack *s, int m_pos, int first, int last)
 	int	i;
 
 	i = 1;
-	while (s && i < m_pos)
+	while (s && i <= m_pos)
 	{
 		if (s->nbr >= first && s->nbr <= last)
 			return (i);
@@ -63,18 +61,4 @@ int	bottom(t_stack *s, int m_pos, int first, int last)
 		s = s->next;
 	}
 	return (0);
-}
-
-int	find_top(t_stack *s, int first, int last)
-{
-	while (!(s->nbr >= first && s->nbr <= last))
-		first++;
-	return (s->nbr);
-}
-
-int	find_bottom(t_stack *s, int first, int last)
-{
-	while (!(s->nbr >= first && s->nbr <= last))
-		s = s->next;
-	return (s->nbr);
 }

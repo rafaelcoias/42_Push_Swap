@@ -39,7 +39,7 @@ static int	check_duplicate(int argc, char **argv, int j)
 	i = 1;
 	while (i != argc)
 	{
-		if (i != j && argv[i] == argv[j])
+		if (i != j && ft_atol(argv[i]) == ft_atol(argv[j]))
 			return (0);
 		i++;
 	}

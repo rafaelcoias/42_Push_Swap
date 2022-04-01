@@ -43,11 +43,11 @@ void	do_rrr(t_stack **a, t_stack **b);
 
 /* GET FUNCTIONS */
 
-t_stack	*get_bottom(t_stack *s);
 t_stack	*get_top(t_stack *s);
 int		get_size(t_stack *s);
 int		get_biggest(t_stack *s);
 int		get_smallest(t_stack *s);
+int		find(t_stack *s, int fst, int lst);
 
 /* ADD & REMOVE */
 
@@ -61,24 +61,18 @@ void	sort_two_a(t_stack **a);
 void	sort_two_b(t_stack **b);
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
-void	sort_medium(t_stack **a, t_stack **b);
-void	sort_big(t_stack **a, t_stack **b);
+void	sort_hundreds(t_stack **a, t_stack **b, int divide);
 int		is_sorted(t_stack **s);
 
 /* SORT A */
 
 int		handle_sort_a(t_stack **s, int div, int aux);
-int		top(t_stack *s, int medium_pos, int first, int last);
 int		bottom(t_stack *s, int medium_pos, int first, int last);
-int		find_top(t_stack *s, int first, int last);
-int		find_bottom(t_stack *s, int first, int last);
 
 /* SORT B */
 
-void	handle_sort_b(t_stack **s);
-void	re_push(t_stack **s);
-int		top_b(t_stack *s, int n);
-int		bottom_b(t_stack *s, int n);
+void	re_sort(t_stack **s);
+int		bottom_b(t_stack *s, int n, int med);
 
 /* PRINT STACK */
 
