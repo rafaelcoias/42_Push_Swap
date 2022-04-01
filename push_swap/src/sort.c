@@ -14,8 +14,8 @@
 
 void	sort(int argc, t_stack *a, t_stack *b)
 {
-	print_stack(a, 1);
-	ft_putstr_fd("\nOperations:\n\n", 1);
+	//print_stack(a, 1);
+	//ft_putstr_fd("\nOperations:\n\n", 1);
 	if (argc == 3)
 		sort_two_a(&a);
 	else if (argc == 4)
@@ -26,7 +26,7 @@ void	sort(int argc, t_stack *a, t_stack *b)
 		sort_hundreds(&a, &b, 5);
 	else if (argc <= 501)
 		sort_hundreds(&a, &b, 11);
-	print_stack(a, 1);
+	//print_stack(a, 1);
 }
 
 int	is_sorted(t_stack **s)

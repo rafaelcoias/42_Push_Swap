@@ -51,7 +51,7 @@ void	check_args(int argc, char **argv)
 	int	i;
 
 	i = 1;
-	if (argc < 3)
+	if (argc == 1)
 		exit(0);
 	while (i != argc)
 	{
