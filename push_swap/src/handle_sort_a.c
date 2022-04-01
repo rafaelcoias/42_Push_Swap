@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_sort.c                                      :+:      :+:    :+:   */
+/*   handle_sort_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 15:26:30 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/03/04 15:29:26 by rade-sar         ###   ########.fr       */
+/*   Created: 2022/04/01 17:24:10 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/01 17:24:12 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	bottom(t_stack *s, int m_pos, int first, int last)
 int	find_top(t_stack *s, int first, int last)
 {
 	while (!(s->nbr >= first && s->nbr <= last))
-
+		first++;
 	return (s->nbr);
 }
 

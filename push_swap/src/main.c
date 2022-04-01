@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 15:18:22 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/03/04 15:21:10 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:19:51 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 	check_args(argc, argv);
 	a = t_stack_a(argv, argc);
 	if (is_sorted(&a))
-		return (0);;
+		return (0);
 	sort(argc, a, b);
 	free_stack(&a);
 	free_stack(&b);

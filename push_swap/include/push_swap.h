@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 16:05:19 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/03/04 16:07:56 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:25:47 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_rm_top(t_stack **s);
 
 /* SORT */
 
-void    sort(int argc, t_stack *a, t_stack *b);
+void	sort(int argc, t_stack *a, t_stack *b);
 void	sort_two_a(t_stack **a);
 void	sort_two_b(t_stack **b);
 void	sort_three(t_stack **a);

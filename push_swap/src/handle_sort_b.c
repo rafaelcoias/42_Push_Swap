@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_sort2.c                                     :+:      :+:    :+:   */
+/*   handle_sort_b.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 15:41:47 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/03/04 15:45:34 by rade-sar         ###   ########.fr       */
+/*   Created: 2022/04/01 17:24:22 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/01 17:24:47 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	handle_sort_b(t_stack **s)
 
 	if (get_size(*s) < 2)
 		return ;
-	smaller = get_smaller(*s);
-	if (top_b(get_top(*s), smaller) <= bottom_b(get_bottom(*s), smaller))
+	smaller = get_smallest(*s);
+	if (top_b(get_top(*s), smaller) <= bottom_b(*s, smaller))
 	{
 		while (get_top(*s)->nbr != smaller)
 			do_rrb(s);
@@ -35,8 +35,8 @@ void	re_push(t_stack **s)
 {
 	int	bigger;
 
-	bigger = get_bigger(*s);
-	if (top_b(get_top(*s), bigger) <= bottom_b(get_bottom(*s), bigger))
+	bigger = get_biggest(*s);
+	if (top_b(get_top(*s), bigger) <= bottom_b(*s, bigger))
 	{
 		while (get_top(*s)->nbr != bigger)
 			do_rb(s);
@@ -58,7 +58,6 @@ int	top_b(t_stack *s, int n)
 		if (s->nbr == n)
 			return (i);
 		i++;
-		//iterar s
 	}
 	return (i);
 }

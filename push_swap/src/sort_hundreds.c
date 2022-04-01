@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_hundreds.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/01 17:22:22 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/01 17:22:58 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void	sort_medium(t_stack **a, t_stack **b)
@@ -6,7 +18,7 @@ void	sort_medium(t_stack **a, t_stack **b)
 	int	div;
 	int	aux;
 
-	bigger = get_bigger(*a);
+	bigger = get_biggest(*a);
 	div = bigger / 5;
 	aux = div;
 	while (aux < bigger)
@@ -31,7 +43,7 @@ void	sort_big(t_stack **a, t_stack **b)
 	int	div;
 	int	aux;
 
-	bigger = get_bigger(*a);
+	bigger = get_biggest(*a);
 	div = bigger / 11;
 	aux = div;
 	while (aux < bigger)

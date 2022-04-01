@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 15:21:27 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/03/04 15:25:50 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:17:20 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static int	check_arg(char *arg)
 		return (0);
 	return (1);
 }
-
 
 static int	check_duplicate(int argc, char **argv, int j)
 {

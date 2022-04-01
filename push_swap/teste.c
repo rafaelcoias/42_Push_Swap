@@ -32,9 +32,6 @@ void	sort_two(t_stack **a)
 
 void	push(t_stack **a, t_stack **b)
 {
-	t_stack	*result;
-	t_stack	*top_b;
-
 	if (!b || get_size(*b) == 0)
 		return ;
 	ft_add_top(a, get_top(*b));

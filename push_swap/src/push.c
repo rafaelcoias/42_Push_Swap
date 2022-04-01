@@ -12,16 +12,12 @@
 
 #include "../include/push_swap.h"
 
-static void	push(t_stack **a, t_stack **b)
+void	push(t_stack **a, t_stack **b)
 {
-	t_stack	*result;
-	t_stack	*top_b;
-
 	if (!b || get_size(*b) == 0)
 		return ;
 	ft_add_top(a, get_top(*b));
 	ft_rm_top(b);
-	
 }
 
 void	do_pa(t_stack **a, t_stack **b)

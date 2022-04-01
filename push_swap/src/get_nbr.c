@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 15:12:29 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/03/04 15:18:06 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:17:56 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_size(t_stack *s)
 int	get_biggest(t_stack *s)
 {
 	int	i;
-	
+
 	if (!s)
 		return (0);
 	i = s->nbr;
