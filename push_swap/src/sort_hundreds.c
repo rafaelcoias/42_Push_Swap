@@ -14,13 +14,12 @@
 
 void	sort_hundreds(t_stack **a, t_stack **b)
 {
-    while (get_smallest(*a) != get_biggest(*a))
+    while (get_size(*a) > 3)
     {
         put_at_top_a(a, get_smallest(*a));
         do_pb(a, b);
     }
-	while (get_size(*a))
-		do_pb(a, b);
+	sort_three(a);
 	while (get_size(*b))
 	{
 		put_at_top_b(b, get_biggest(*b));
