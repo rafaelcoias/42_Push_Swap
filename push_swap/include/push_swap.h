@@ -47,7 +47,13 @@ t_stack	*get_top(t_stack *s);
 int		get_size(t_stack *s);
 int		get_biggest(t_stack *s);
 int		get_smallest(t_stack *s);
-int		find(t_stack *s, int fst, int lst);
+
+/* FIND FUNCTIONS */
+
+int		find_nbr_in_stack(t_stack *s, int nbr);
+int		find_range_in_stack(t_stack *s, int first, int last);
+int		find_nbr_in_bottom(t_stack *s, int n, int med);
+int		find_smallest_in_range(int fst, int lst);
 
 /* ADD & REMOVE */
 
@@ -60,22 +66,26 @@ void	sort(int argc, t_stack *a, t_stack *b);
 void	sort_two_a(t_stack **a);
 void	sort_two_b(t_stack **b);
 void	sort_three(t_stack **a);
+void	sort_three_b(t_stack **s);
 void	sort_five(t_stack **a, t_stack **b);
-void	sort_hundreds(t_stack **a, t_stack **b, int divide);
+void	sort_hundreds(t_stack **a, t_stack **b);
 int		is_sorted(t_stack **s);
 
-/* SORT A */
+/* PUT AT TOP */
 
-int		handle_sort_a(t_stack **s, int div, int aux);
-int		bottom(t_stack *s, int medium_pos, int first, int last);
+void	put_at_top_a(t_stack **s, int nbr);
+void	put_at_top_b(t_stack **s, int nbr);
 
-/* SORT B */
-
-void	re_sort(t_stack **s);
-int		bottom_b(t_stack *s, int n, int med);
-
-/* PRINT STACK */
+/* PRINT ONE STACK */
 
 void	print_stack(t_stack *s, int first);
+
+/* PRINT STACKS */
+
+void	print_stack_a_and_b(t_stack *a, t_stack *b, int first);
+void	print_stack_limit(t_stack *a, t_stack *b);
+void	spaces(int total);
+void	print_a_bigger(t_stack *a, t_stack *b);
+void	print_b_bigger(t_stack *a, t_stack *b);
 
 #endif

@@ -2,7 +2,7 @@ NAME = push_swap
 
 HEAD = ./include
 
-SRC = ./src/main.c ./src/check.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rv_rotate.c ./src/add_remove.c ./src/get_nbr.c ./src/handle_sort_a.c ./src/handle_sort_b.c ./src/print_stack.c ./src/sort.c ./src/sort_two.c ./src/sort_three.c ./src/sort_five.c ./src/sort_hundreds.c
+SRC = ./src/main.c ./src/check.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rv_rotate.c ./src/add_remove.c ./src/get_nbr.c ./src/put_at_top.c ./src/find_nbr.c ./src/print_stack.c ./src/print_stacks.c ./src/sort.c ./src/sort_two.c ./src/sort_three.c ./src/sort_five.c ./src/sort_hundreds.c
 
 MAKE_LIBFT = cd ./include/libft && make all
 

@@ -63,16 +63,3 @@ int	get_smallest(t_stack *s)
 	}
 	return (i);
 }
-
-int	find(t_stack *s, int fst, int lst)
-{
-	if (!s)
-		return (0);
-	while (s->next)
-	{
-		if (s->nbr >= fst && s->nbr <= lst)
-			return (1);
-		s = s->next;
-	}
-	return (0);
-}

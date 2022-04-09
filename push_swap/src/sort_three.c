@@ -37,3 +37,29 @@ void	sort_three(t_stack **s)
 			do_ra(s);
 	}
 }
+
+void	sort_three_b(t_stack **s)
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_stack	*c;
+
+	if (!(*s))
+		return ;
+	a = *s;
+	b = a->next;
+	c = b->next;
+	while (!is_sorted(s))
+	{
+		if ((a->nbr > b->nbr && a->nbr > c->nbr)
+			|| (a->nbr < b->nbr && a->nbr < c->nbr && b->nbr < c->nbr)
+			|| (c->nbr < b->nbr && c->nbr < a->nbr))
+			do_sb(s);
+		else if (c->nbr > b->nbr
+			&& c->nbr > a->nbr
+			&& b->nbr < a->nbr)
+			do_rrb(s);
+		else if (a->nbr < b->nbr && a->nbr < c->nbr)
+			do_rb(s);
+	}
+}

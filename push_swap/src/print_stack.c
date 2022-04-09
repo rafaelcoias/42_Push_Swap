@@ -30,5 +30,5 @@ void	print_stack(t_stack *s, int first)
 		ft_putchar_fd('\n', 1);
 	}
 	if (first)
-		ft_putstr_fd("-\na\n", 1);
+		ft_putstr_fd("-\nS\n", 1);
 }

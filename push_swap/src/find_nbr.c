@@ -19,7 +19,7 @@ than 2 numbers.
 If it has more than 2 numbers it will rotate or reverse 
 rotate the stack depending if the smallest number of the
 stack is closer to the top or bottom (that is what the 
-bottom_b function do).
+find_in_bottom function do).
 
 It is going to rotate or reverse rotate until the number 
 that we look for is in the top of the stack.
@@ -30,24 +30,22 @@ re_push function does the same, but is looking for the
 biggest number on stack b.
 */
 
-void	re_sort(t_stack **s)
+int	find_range_in_stack(t_stack *s, int first, int last)
 {
-	int	bigger;
-	int	med;
+	int	i;
 
-	if (get_size(*s) < 2)
-		return ;
-	bigger = get_biggest(*s);
-	med = get_size(*s) / 2;
-	if (bottom_b(*s, bigger, med))
-		while (get_top(*s)->nbr != bigger)
-			do_rb(s);
-	else
-		while (get_top(*s)->nbr != bigger)
-			do_rrb(s);
+	i = 1;
+	while (s)
+	{
+		if (s->nbr >= first && s->nbr <= last)
+			return (i);
+		i++;
+		s = s->next;
+	}
+	return (0);
 }
 
-int	bottom_b(t_stack *s, int n, int med)
+int	find_nbr_in_bottom(t_stack *s, int n, int med)
 {
 	int	i;
 
@@ -60,4 +58,28 @@ int	bottom_b(t_stack *s, int n, int med)
 		s = s->next;
 	}
 	return (0);
+}
+
+int	find_nbr_in_stack(t_stack *s, int nbr)
+{
+	if (!s)
+		return (0);
+	while (s->next)
+	{
+		if (s->nbr == nbr)
+			return (1);
+		s = s->next;
+	}
+	return (0);
+}
+
+int	find_smallest_in_range(int fst, int lst)
+{
+	int	min;
+
+	min = fst;
+	while (++fst != lst + 1)
+		if (min < fst)
+			min = fst;
+	return (min);
 }

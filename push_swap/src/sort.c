@@ -20,12 +20,10 @@ void	sort(int argc, t_stack *a, t_stack *b)
 		sort_two_a(&a);
 	else if (argc == 4)
 		sort_three(&a);
-	else if (argc <= 6)
+	else if (argc <= 7)
 		sort_five(&a, &b);
-	else if (argc <= 101)
-		sort_hundreds(&a, &b, 5);
-	else if (argc <= 501)
-		sort_hundreds(&a, &b, 11);
+	else
+		sort_hundreds(&a, &b);
 	//print_stack(a, 1);
 }
 
