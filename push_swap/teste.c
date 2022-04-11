@@ -1,5 +1,102 @@
 #include "./include/push_swap.h"
 
+char	*ft_strdup(const char *s1)
+{
+	char	*cpy;
+	int		i;
+
+	cpy = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (cpy == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		cpy[i] = s1[i];
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	if (s == NULL)
+		return ;
+	i = -1;
+	while (s[++i])
+		ft_putchar_fd(s[i], fd);
+}
+
+static void	ft_print_special(int fd)
+{
+	write(fd, "-2147483648", 11);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n != -2147483648)
+	{
+		if (n < 0)
+		{
+			n = n * (-1);
+			ft_putchar_fd('-', fd);
+		}
+		if (n < 10)
+			ft_putchar_fd(n + '0', fd);
+		else
+		{
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
+		}
+	}
+	else
+		ft_print_special(fd);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+int	ft_atoi(const char *str)
+{
+	int		i;
+	int		sign;
+	int		result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+		i++;
+	while (str[i] && (str[i] == '-' || str[i] == '+'))
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
+}
+
+
+
 long	ft_atol(const char *str)
 {
 	long	result;
@@ -25,6 +122,85 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (sign * result);
+}
+
+static int	ft_malloc(int n, int count)
+{
+	if (n <= 0)
+		return (count + 1);
+	else
+		return (count);
+}
+
+static char	*ft_strrev(char *str, int n)
+{
+	int		i;
+	int		j;
+	int		size;
+	char	aux;
+
+	i = 0;
+	size = 0;
+	while (str[size])
+		size++;
+	j = size - 1;
+	if (n < 0)
+	{
+		i++;
+		size++;
+	}
+	while (i < size / 2)
+	{
+		aux = str[i];
+		str[i] = str[j];
+		str[j--] = aux;
+		i++;
+	}
+	return (str);
+}
+
+static char	*ft_strnbr(char *str, int n)
+{
+	int		i;
+
+	i = 0;
+	if (n == 0)
+		str[i++] = '0';
+	if (n < 0)
+	{
+		str[i++] = '-';
+		n = n * -1;
+	}
+	while (n != 0)
+	{
+		str[i++] = (n % 10) + '0';
+		n /= 10;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int		count;
+	int		aux;
+
+	count = 0;
+	aux = n;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	while (aux != 0)
+	{
+		aux = aux / 10;
+		count++;
+	}
+	str = malloc(sizeof(char) * (ft_malloc(n, count) + 1));
+	if (str == NULL)
+		return (NULL);
+	str = ft_strnbr(str, n);
+	str = ft_strrev(str, n);
+	return (str);
 }
 
 void	ft_add_top(t_stack **s, t_stack *new)
@@ -240,12 +416,14 @@ void	do_pa(t_stack **a, t_stack **b)
 {
 	push(a, b);
 	write(1, "pa\n", 3);
+	//print_stack_a_and_b(*a, *b, 1);
 }
 
 void	do_pb(t_stack **a, t_stack **b)
 {
 	push(b, a);
 	write(1, "pb\n", 3);
+	//print_stack_a_and_b(*a, *b, 1);
 }
 
 // =========================================================
@@ -507,19 +685,17 @@ void	sort_two_b(t_stack **b)
 
 void	sort(int argc, t_stack *a, t_stack *b)
 {
-	//print_stack_a_and_b(a, b, 1);
-	//ft_putstr_fd("\nOperations:\n\n", 1);
+	print_stack_a_and_b(a, b, 1);
+	ft_putstr_fd("\nOperations:\n\n", 1);
 	if (argc == 3)
 		sort_two_a(&a);
 	else if (argc == 4)
 		sort_three(&a);
 	else if (argc <= 7)
 		sort_five(&a, &b);
-	else if (argc <= 101)
+	else
 		sort_hundreds(&a, &b);
-	else if (argc <= 501)
-		sort_hundreds(&a, &b);
-	//print_stack_a_and_b(a, b, 1);
+	print_stack_a_and_b(a, b, 1);
 }
 
 int	is_sorted(t_stack **s)
@@ -534,6 +710,105 @@ int	is_sorted(t_stack **s)
 		aux = aux->next;
 	}
 	return (1);
+}
+
+// =========================================================
+
+void	print_stack_limit(t_stack *a, t_stack *b)
+{
+	ft_putstr_fd("-----------     -----------\n", 1);
+	ft_putstr_fd("     A               B     \n\n", 1);
+}
+
+void	spaces(int total)
+{
+	int	i;
+
+	i = -1;
+	while (++i != total)
+		ft_putchar_fd(' ', 1);
+}
+
+void	print_a_bigger(t_stack *a, t_stack *b)
+{
+	if (!a && !b)
+		return ;	
+	if (a->next)
+	{
+		if (b)
+			print_stack_a_and_b(a->next, b->next, 0);
+		else
+			print_stack_a_and_b(a->next, b, 0);
+		spaces(11 - ft_strlen(ft_itoa(a->nbr)));
+		ft_putnbr_fd(a->nbr, 1);
+		if (b)
+		{
+			spaces(16 - ft_strlen(ft_itoa(b->nbr)));
+			ft_putnbr_fd(b->nbr, 1);
+		}
+		ft_putchar_fd('\n', 1);
+	}
+	else
+	{
+		spaces(11 - ft_strlen(ft_itoa(a->nbr)));
+		ft_putnbr_fd(a->nbr, 1);
+		if (b)
+		{
+			spaces(16 - ft_strlen(ft_itoa(b->nbr)));
+			ft_putnbr_fd(b->nbr, 1);
+		}
+		ft_putchar_fd('\n', 1);
+	}
+}
+
+void	print_b_bigger(t_stack *a, t_stack *b)
+{
+	if (!a && !b)
+		return ;	
+	if (b->next)
+	{
+		if (a)
+		{
+			print_stack_a_and_b(a->next, b->next, 0);
+			spaces(11 - ft_strlen(ft_itoa(a->nbr)));
+			ft_putnbr_fd(a->nbr, 1);
+		}
+		else
+		{
+			print_stack_a_and_b(a, b->next, 0);
+			spaces(11);
+		}
+		spaces(16 - ft_strlen(ft_itoa(b->nbr)));
+		ft_putnbr_fd(b->nbr, 1);
+		ft_putchar_fd('\n', 1);
+	}
+	else
+	{
+		if (a)
+		{
+			ft_putnbr_fd(a->nbr, 1);
+			spaces(11 - ft_strlen(ft_itoa(b->nbr)));
+		}
+		else
+			spaces(11);
+		spaces(16 - ft_strlen(ft_itoa(b->nbr)));
+		ft_putnbr_fd(b->nbr, 1);
+		ft_putchar_fd('\n', 1);
+	}
+}
+
+void	print_stack_a_and_b(t_stack *a, t_stack *b, int first)
+{
+	if (!a && !b)
+		return ;
+	if (first)
+		ft_putstr_fd("\nStacks:\n\n", 1);
+	if (get_size(a) >= get_size(b))
+		print_a_bigger(a, b);
+	else
+		print_b_bigger(a, b);
+	if (first)
+		print_stack_limit(a, b);
 }
 
 // =========================================================
