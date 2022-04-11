@@ -17,10 +17,10 @@ void	sort_five(t_stack **a, t_stack **b)
 	while (get_size(*a) > 3)
 		do_pb(a, b);
 	sort_three(a);
-    if (get_size(*b) != 3)
-	    sort_two_b(b);
-    else 
-        sort_three_b(b);
+    if (get_size(*b) == 3)
+		sort_three_b(b);
+    else
+		sort_two_b(b);
 	while (get_size(*b) > 0)
 	{
 		if (get_biggest(*a) < get_top(*b)->nbr)

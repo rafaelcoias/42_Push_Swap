@@ -72,6 +72,8 @@ int	main(int argc, char **argv)
 	check_args(argc, argv);
 	a = t_stack_a(argv, argc);
 	if (!is_sorted(&a))
+		sort_easy(&a);
+	if (!is_sorted(&a))
 		sort(argc, a, b);
 	free_stack(&a);
 	return (0);
