@@ -97,11 +97,11 @@ int	ft_atoi(const char *str)
 
 
 
-long	ft_atol(const char *str)
+long long	ft_atol(const char *str)
 {
-	long	result;
-	int		sign;
-	int		i;
+	long long	result;
+	int			sign;
+	int			i;
 
 	if (!str)
 		return (0);

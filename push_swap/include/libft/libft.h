@@ -85,6 +85,6 @@ int		ft_atoi(const char *str);
 int		ft_lstsize(t_list *lst);
 int		ft_lstsize(t_list *lst);
 
-long	ft_atol(const char *str);
+long long	ft_atol(const char *str);
 
 #endif
