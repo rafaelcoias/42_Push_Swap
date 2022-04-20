@@ -12,6 +12,22 @@
 
 #include "../include/push_swap.h"
 
+void	put_range_at_top_a(t_stack **s, int fst, int lst)
+{
+	int	med;
+
+	if (get_size(*s) < 2 || 
+		(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
+		return ;
+	med = get_size(*s) / 2;
+	if (find_range_in_bottom(*s, fst, lst, med))
+		while (!(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
+			do_ra(s);
+	else
+		while (!(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
+			do_rra(s);
+}
+
 void	put_at_top_a(t_stack **s, int nbr)
 {
 	int	med;

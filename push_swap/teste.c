@@ -309,6 +309,21 @@ int	find_range_in_stack(t_stack *s, int first, int last)
 	return (0);
 }
 
+int	find_range_in_bottom(t_stack *s, int fst, int lst, int med)
+{
+	int	i;
+
+	i = 1;
+	while (s && i <= med)
+	{
+		if (s->nbr >= fst && s->nbr <= lst)
+			return (i);
+		i++;
+		s = s->next;
+	}
+	return (0);
+}
+
 int	find_nbr_in_bottom(t_stack *s, int n, int med)
 {
 	int	i;
@@ -416,17 +431,31 @@ void	do_pa(t_stack **a, t_stack **b)
 {
 	push(a, b);
 	write(1, "pa\n", 3);
-	//print_stack_a_and_b(*a, *b, 1);
 }
 
 void	do_pb(t_stack **a, t_stack **b)
 {
 	push(b, a);
 	write(1, "pb\n", 3);
-	//print_stack_a_and_b(*a, *b, 1);
 }
 
 // =========================================================
+
+void	put_range_at_top_a(t_stack **s, int fst, int lst)
+{
+	int	med;
+
+	if (get_size(*s) < 2 || 
+		(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
+		return ;
+	med = get_size(*s) / 2;
+	if (find_range_in_bottom(*s, fst, lst, med))
+		while (!(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
+			do_ra(s);
+	else
+		while (!(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
+			do_rra(s);
+}
 
 void	put_at_top_a(t_stack **s, int nbr)
 {
@@ -596,14 +625,24 @@ void	sort_five(t_stack **a, t_stack **b)
 
 // =========================================================
 
-void	sort_hundreds(t_stack **a, t_stack **b)
+void	sort_hundreds(t_stack **a, t_stack **b, int div)
 {
-    while (get_size(*a) > 3)
+	int	smallest;
+	int	add;
+
+	smallest = get_smallest(*a);
+	add = get_biggest(*a) / div;
+    while (smallest < get_biggest(*a))
     {
-        put_at_top_a(a, get_smallest(*a));
-        do_pb(a, b);
+		while (find_range_in_stack(*a, smallest, smallest + add))
+		{
+			put_range_at_top_a(a, smallest, smallest + add);
+        	do_pb(a, b);
+		}
+		smallest += add;
     }
-	sort_three(a);
+	while (get_size(*a))
+		do_pb(a, b);
 	while (get_size(*b))
 	{
 		put_at_top_b(b, get_biggest(*b));
@@ -685,17 +724,19 @@ void	sort_two_b(t_stack **b)
 
 void	sort(int argc, t_stack *a, t_stack *b)
 {
-	print_stack_a_and_b(a, b, 1);
-	ft_putstr_fd("\nOperations:\n\n", 1);
+	//print_stack_a_and_b(a, b, 1);
+	//ft_putstr_fd("\nOperations:\n\n", 1);
 	if (argc == 3)
 		sort_two_a(&a);
 	else if (argc == 4)
 		sort_three(&a);
 	else if (argc <= 7)
 		sort_five(&a, &b);
-	else
-		sort_hundreds(&a, &b);
-	print_stack_a_and_b(a, b, 1);
+	else if (argc <= 101)
+		sort_hundreds(&a, &b, 5);
+	else if (argc <= 501)
+		sort_hundreds(&a, &b, 11);
+	//print_stack_a_and_b(a, b, 1);
 }
 
 int	is_sorted(t_stack **s)
@@ -714,7 +755,7 @@ int	is_sorted(t_stack **s)
 
 // =========================================================
 
-void	print_stack_limit(t_stack *a, t_stack *b)
+void	print_stack_limit()
 {
 	ft_putstr_fd("-----------     -----------\n", 1);
 	ft_putstr_fd("     A               B     \n\n", 1);

@@ -60,6 +60,21 @@ int	find_nbr_in_bottom(t_stack *s, int n, int med)
 	return (0);
 }
 
+int	find_range_in_bottom(t_stack *s, int fst, int lst, int med)
+{
+	int	i;
+
+	i = 1;
+	while (s && i <= med)
+	{
+		if (s->nbr >= fst && s->nbr <= lst)
+			return (i);
+		i++;
+		s = s->next;
+	}
+	return (0);
+}
+
 int	find_nbr_in_stack(t_stack *s, int nbr)
 {
 	if (!s)

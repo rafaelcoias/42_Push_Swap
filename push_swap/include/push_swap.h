@@ -53,6 +53,7 @@ int		get_smallest(t_stack *s);
 int		find_nbr_in_stack(t_stack *s, int nbr);
 int		find_range_in_stack(t_stack *s, int first, int last);
 int		find_nbr_in_bottom(t_stack *s, int n, int med);
+int		find_range_in_bottom(t_stack *s, int fst, int lst, int med);
 int		find_smallest_in_range(int fst, int lst);
 
 /* ADD & REMOVE */
@@ -68,11 +69,12 @@ void	sort_two_b(t_stack **b);
 void	sort_three(t_stack **a);
 void	sort_three_b(t_stack **s);
 void	sort_five(t_stack **a, t_stack **b);
-void	sort_hundreds(t_stack **a, t_stack **b);
+void	sort_hundreds(t_stack **a, t_stack **b, int div);
 int		is_sorted(t_stack **s);
 
 /* PUT AT TOP */
 
+void	put_range_at_top_a(t_stack **s, int fst, int lst);
 void	put_at_top_a(t_stack **s, int nbr);
 void	put_at_top_b(t_stack **s, int nbr);
 
@@ -83,7 +85,7 @@ void	print_stack(t_stack *s, int first);
 /* PRINT STACKS */
 
 void	print_stack_a_and_b(t_stack *a, t_stack *b, int first);
-void	print_stack_limit(t_stack *a, t_stack *b);
+void	print_stack_limit();
 void	spaces(int total);
 void	print_a_bigger(t_stack *a, t_stack *b);
 void	print_b_bigger(t_stack *a, t_stack *b);

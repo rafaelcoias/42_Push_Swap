@@ -20,8 +20,10 @@ void	sort(int argc, t_stack *a, t_stack *b)
 		sort_three(&a);
 	else if (argc <= 7)
 		sort_five(&a, &b);
-	else
-		sort_hundreds(&a, &b);
+	else if (argc <= 101)
+		sort_hundreds(&a, &b, 5);
+	else if (argc <= 501)
+		sort_hundreds(&a, &b, 11);
 }
 
 int	is_sorted(t_stack **s)

@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-void	print_stack_limit(t_stack *a, t_stack *b)
+void	print_stack_limit()
 {
 	ft_putstr_fd("-----------     -----------\n", 1);
 	ft_putstr_fd("     A               B     \n\n", 1);
