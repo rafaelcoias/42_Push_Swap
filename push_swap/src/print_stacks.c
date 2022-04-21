@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_stacks.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/21 14:39:06 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/21 14:39:09 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-void	print_stack_limit()
+static void	print_stack_limit(void)
 {
 	ft_putstr_fd("-----------     -----------\n", 1);
 	ft_putstr_fd("     A               B     \n\n", 1);
 }
 
-void	spaces(int total)
+static void	spaces(int total)
 {
 	int	i;
 
@@ -18,7 +30,7 @@ void	spaces(int total)
 void	print_a_bigger(t_stack *a, t_stack *b)
 {
 	if (!a && !b)
-		return ;	
+		return ;
 	if (a->next)
 	{
 		if (b)
@@ -35,22 +47,13 @@ void	print_a_bigger(t_stack *a, t_stack *b)
 		ft_putchar_fd('\n', 1);
 	}
 	else
-	{
-		spaces(11 - ft_strlen(ft_itoa(a->nbr)));
-		ft_putnbr_fd(a->nbr, 1);
-		if (b)
-		{
-			spaces(16 - ft_strlen(ft_itoa(b->nbr)));
-			ft_putnbr_fd(b->nbr, 1);
-		}
-		ft_putchar_fd('\n', 1);
-	}
+		print_a_bigger_handler(a, b);
 }
 
 void	print_b_bigger(t_stack *a, t_stack *b)
 {
 	if (!a && !b)
-		return ;	
+		return ;
 	if (b->next)
 	{
 		if (a)
@@ -69,18 +72,7 @@ void	print_b_bigger(t_stack *a, t_stack *b)
 		ft_putchar_fd('\n', 1);
 	}
 	else
-	{
-		if (a)
-		{
-			ft_putnbr_fd(a->nbr, 1);
-			spaces(11 - ft_strlen(ft_itoa(b->nbr)));
-		}
-		else
-			spaces(11);
-		spaces(16 - ft_strlen(ft_itoa(b->nbr)));
-		ft_putnbr_fd(b->nbr, 1);
-		ft_putchar_fd('\n', 1);
-	}
+		print_b_bigger_handler(a, b);
 }
 
 void	print_stack_a_and_b(t_stack *a, t_stack *b, int first)
@@ -94,5 +86,5 @@ void	print_stack_a_and_b(t_stack *a, t_stack *b, int first)
 	else
 		print_b_bigger(a, b);
 	if (first)
-		print_stack_limit(a, b);
+		print_stack_limit();
 }

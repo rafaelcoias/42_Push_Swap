@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_sort_b.c                                    :+:      :+:    :+:   */
+/*   find_nbr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 17:24:22 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/04/01 17:24:47 by rade-sar         ###   ########.fr       */
+/*   Created: 2022/04/21 14:41:32 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/21 14:41:34 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-/*
-Handle_sort_b function will check if the stack has less
-than 2 numbers.
-
-If it has more than 2 numbers it will rotate or reverse 
-rotate the stack depending if the smallest number of the
-stack is closer to the top or bottom (that is what the 
-find_in_bottom function do).
-
-It is going to rotate or reverse rotate until the number 
-that we look for is in the top of the stack.
-
-========================================================
-
-re_push function does the same, but is looking for the 
-biggest number on stack b.
-*/
 
 int	find_range_in_stack(t_stack *s, int first, int last)
 {

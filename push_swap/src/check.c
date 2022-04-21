@@ -14,7 +14,7 @@
 
 static void	send_message(void)
 {	
-	write(1, "Error\n", 6);
+	write(1, "\033[1;31mError\n[0m", 13);
 	exit(0);
 }
 

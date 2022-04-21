@@ -17,9 +17,9 @@ void	sort_five(t_stack **a, t_stack **b)
 	while (get_size(*a) > 3)
 		do_pb(a, b);
 	sort_three(a);
-    if (get_size(*b) == 3)
+	if (get_size(*b) == 3)
 		sort_three_b(b);
-    else
+	else
 		sort_two_b(b);
 	while (get_size(*b) > 0)
 	{
@@ -33,6 +33,6 @@ void	sort_five(t_stack **a, t_stack **b)
 			do_rra(a);
 		else
 			do_pa(a, b);
-    }
+	}
 	put_at_top_a(a, get_smallest(*a));
 }

@@ -19,15 +19,15 @@ void	sort_hundreds(t_stack **a, t_stack **b, int div)
 
 	smallest = get_smallest(*a);
 	add = get_biggest(*a) / div;
-    while (smallest < get_biggest(*a))
-    {
+	while (smallest < get_biggest(*a))
+	{
 		while (find_range_in_stack(*a, smallest, smallest + add))
 		{
 			put_range_at_top_a(a, smallest, smallest + add);
-        	do_pb(a, b);
+			do_pb(a, b);
 		}
 		smallest += add;
-    }
+	}
 	while (get_size(*a))
 		do_pb(a, b);
 	while (get_size(*b))

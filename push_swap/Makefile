@@ -2,7 +2,7 @@ NAME = push_swap
 
 HEAD = ./include
 
-SRC = ./src/main.c ./src/check.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rv_rotate.c ./src/add_remove.c ./src/get_nbr.c ./src/put_at_top.c ./src/find_nbr.c ./src/print_stack.c ./src/print_stacks.c ./src/sort.c ./src/sort_two.c ./src/sort_three.c ./src/sort_five.c ./src/sort_hundreds.c
+SRC = ./src/main.c ./src/check.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rv_rotate.c ./src/add_remove.c ./src/get_nbr.c ./src/put_at_top.c ./src/find_nbr.c ./src/print_stacks.c ./src/print_stacks_handle.c ./src/sort.c ./src/sort_easy.c ./src/sort_two.c ./src/sort_three.c ./src/sort_five.c ./src/sort_hundreds.c
 
 MAKE_LIBFT = cd ./include/libft && make all
 
@@ -16,31 +16,37 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 RM = rm -f
 
-${NAME}: ${OBJ}
+${NAME}: ${OBJ} 
 	${MAKE_LIBFT} -s
 	@$(GCC) $(CFLAGS) -o $(NAME) $(OBJ) -L $(LIBFT_PATH) -lft
-	@echo "\n ======= push_swap created ======= \n"
+	@echo "\n ======= $(GREEN)push_swap created$(RESET) ======= \n"
+
+# COLORS #
+GREEN		=	\033[0;32m
+YELLOW		=	\033[0;33m
+RED			=	\033[0;31m
+RESET       =   \033[0m
 
 # RULES #
 
-all: ${NAME}
+all: ${NAME} 
 
 clean:
 	@cd ./include/libft && make clean -s
 	${RM} ${OBJ}
 
-fclean: clean
+fclean: clean 
 	@cd ./include/libft && make fclean -s
 	${RM} ${NAME}
-	@echo "\n ======= push_swap removed ======= \n"
+	@echo "\n ======= $(RED)push_swap removed$(RESET) ======= \n"
 	
 
 re:	fclean all
 
 norm:
-	@echo "\n ======= norm libft ======= \n"
+	@echo "\n ======= $(YELLOW)norm libft$(RESET) ======= \n"
 	@cd ./include/libft && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
-	@echo "\n ======= norm push_swap =======\n "
+	@echo "\n ======= $(YELLOW)norm push_swap$(RESET) =======\n "
 	@cd ./src && norminette -R CheckForbiddenSourceHeader *.c && cd ../include && norminette -R CheckDefine *.h
 
 .PHONY: all clean fclean re norm

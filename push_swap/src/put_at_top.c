@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_sort_a.c                                    :+:      :+:    :+:   */
+/*   put_at_top.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 17:24:10 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/04/01 17:24:12 by rade-sar         ###   ########.fr       */
+/*   Created: 2022/04/21 14:40:51 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/21 14:40:53 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	put_range_at_top_a(t_stack **s, int fst, int lst)
 {
 	int	med;
 
-	if (get_size(*s) < 2 || 
-		(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
+	if (get_size(*s) < 2
+		|| (get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
 		return ;
 	med = get_size(*s) / 2;
 	if (find_range_in_bottom(*s, fst, lst, med))
