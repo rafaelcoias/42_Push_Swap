@@ -12,18 +12,18 @@
 
 #include "../include/push_swap.h"
 
-void	sort(int argc, t_stack *a, t_stack *b)
+void	sort(int argc, t_stack *a, t_stack *b, t_flags *f)
 {
-	if (argc == 3)
-		sort_two_a(&a);
-	else if (argc == 4)
-		sort_three(&a);
-	else if (argc <= 7)
-		sort_five(&a, &b);
-	else if (argc <= 101)
-		sort_hundreds(&a, &b, 5);
-	else if (argc <= 501)
-		sort_hundreds(&a, &b, 11);
+	if (argc == 2)
+		sort_two_a(&a, &b, f);
+	else if (argc == 3)
+		sort_three_a(&a, &b, f);
+	else if (argc <= 6)
+		sort_five(&a, &b, f);
+	else if (argc <= 100)
+		sort_hundreds(&a, &b, 5, f);
+	else if (argc <= 500)
+		sort_hundreds(&a, &b, 11, f);
 }
 
 int	is_sorted(t_stack **s)

@@ -30,21 +30,30 @@ static void	rv_rotate(t_stack **s)
 	tmp->next = NULL;
 }
 
-void	do_rra(t_stack **s)
+void	do_rra(t_stack **a, t_stack **b, t_flags *f)
 {
-	rv_rotate(s);
+	rv_rotate(a);
 	write(1, "rra\n", 4);
+	f->count = f->count + 1;
+	if (f->view)
+		print_stack_a_and_b(*a, *b, 1, f);
 }
 
-void	do_rrb(t_stack **s)
+void	do_rrb(t_stack **a, t_stack **b, t_flags *f)
 {
-	rv_rotate(s);
+	rv_rotate(b);
 	write(1, "rrb\n", 4);
+	f->count = f->count + 1;
+	if (f->view)
+		print_stack_a_and_b(*a, *b, 1, f);
 }
 
-void	do_rrr(t_stack **a, t_stack **b)
+void	do_rrr(t_stack **a, t_stack **b, t_flags *f)
 {
 	rv_rotate(a);
 	rv_rotate(b);
 	write(1, "rrr\n", 4);
+	f->count = f->count + 1;
+	if (f->view)
+		print_stack_a_and_b(*a, *b, 1, f);
 }

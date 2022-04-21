@@ -20,14 +20,20 @@ void	push(t_stack **a, t_stack **b)
 	ft_rm_top(b);
 }
 
-void	do_pa(t_stack **a, t_stack **b)
+void	do_pa(t_stack **a, t_stack **b, t_flags *f)
 {
 	push(a, b);
 	write(1, "pa\n", 3);
+	f->count = f->count + 1;
+	if (f->view)
+		print_stack_a_and_b(*a, *b, 1, f);
 }
 
-void	do_pb(t_stack **a, t_stack **b)
+void	do_pb(t_stack **a, t_stack **b, t_flags *f)
 {
 	push(b, a);
 	write(1, "pb\n", 3);
+	f->count = f->count + 1;
+	if (f->view)
+		print_stack_a_and_b(*a, *b, 1, f);
 }

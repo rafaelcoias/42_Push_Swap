@@ -46,13 +46,39 @@ static int	check_duplicate(int argc, char **argv, int j)
 	return (1);
 }
 
-void	check_args(int argc, char **argv)
+static int	check_flags(char **argv, int i, t_flags **f)
 {
+	if (!ft_strcmp(argv[1], "-v") || !ft_strcmp(argv[2], "-v")
+		|| !ft_strcmp(argv[3], "-v"))
+	{
+		(*f)->view = 1;
+		i++;
+	}
+	if (!ft_strcmp(argv[1], "-c") || !ft_strcmp(argv[2], "-c")
+		|| !ft_strcmp(argv[3], "-c"))
+	{
+		(*f)->color = 1;
+		i++;
+	}
+	if (!ft_strcmp(argv[1], "-i") || !ft_strcmp(argv[2], "-i")
+		|| !ft_strcmp(argv[3], "-i"))
+	{
+		(*f)->iter = 1;
+		i++;
+	}
+	return (i);
+}
+
+int	check_args(int argc, char **argv, t_flags **f)
+{
+	int	fst;
 	int	i;
 
 	i = 1;
 	if (argc == 1)
 		exit(0);
+	i = check_flags(argv, i, f);
+	fst = i;
 	while (i != argc)
 	{
 		if (!check_arg(argv[i]))
@@ -61,4 +87,5 @@ void	check_args(int argc, char **argv)
 			send_message();
 		i++;
 	}
+	return (fst);
 }

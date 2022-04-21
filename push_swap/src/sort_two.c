@@ -12,16 +12,16 @@
 
 #include "../include/push_swap.h"
 
-void	sort_two_a(t_stack **a)
+void	sort_two_a(t_stack **a, t_stack **b, t_flags *f)
 {
 	if (!is_sorted(a))
-		do_sa(a);
+		do_sa(a, b, f);
 	return ;
 }
 
-void	sort_two_b(t_stack **b)
+void	sort_two_b(t_stack **a, t_stack **b, t_flags *f)
 {
 	if (!is_sorted(b))
-		do_sb(b);
+		do_sb(a, b, f);
 	return ;
 }

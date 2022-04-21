@@ -26,21 +26,30 @@ static void	rotate(t_stack **s)
 	first->next = NULL;
 }
 
-void	do_ra(t_stack **s)
+void	do_ra(t_stack **a, t_stack **b, t_flags *f)
 {
-	rotate(s);
+	rotate(a);
 	write(1, "ra\n", 3);
+	f->count = f->count + 1;
+	if (f->view)
+		print_stack_a_and_b(*a, *b, 1, f);
 }
 
-void	do_rb(t_stack **s)
+void	do_rb(t_stack **a, t_stack **b, t_flags *f)
 {
-	rotate(s);
+	rotate(b);
 	write(1, "rb\n", 3);
+	f->count = f->count + 1;
+	if (f->view)
+		print_stack_a_and_b(*a, *b, 1, f);
 }
 
-void	do_rr(t_stack **a, t_stack **b)
+void	do_rr(t_stack **a, t_stack **b, t_flags *f)
 {
 	rotate(a);
 	rotate(b);
 	write(1, "rr\n", 3);
+	f->count = f->count + 1;
+	if (f->view)
+		print_stack_a_and_b(*a, *b, 1, f);
 }

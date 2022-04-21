@@ -12,6 +12,18 @@
 
 #include "../include/push_swap.h"
 
+t_stack	*ft_add(int n)
+{
+	t_stack	*new;
+
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->nbr = n;
+	new->next = NULL;
+	return (new);
+}
+
 void	ft_add_top(t_stack **s, t_stack *new)
 {
 	t_stack	*result;

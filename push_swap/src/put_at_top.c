@@ -12,48 +12,52 @@
 
 #include "../include/push_swap.h"
 
-void	put_range_at_top_a(t_stack **s, int fst, int lst)
+void	put_range_top_a(t_stack **a, t_stack **b, int v[2], t_flags *f)
 {
 	int	med;
+	int	fst;
+	int	lst;
 
-	if (get_size(*s) < 2
-		|| (get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
+	fst = v[0];
+	lst = v[0] + v[1];
+	if (get_size(*a) < 2
+		|| (get_top(*a)->nbr >= fst && get_top(*a)->nbr <= lst))
 		return ;
-	med = get_size(*s) / 2;
-	if (find_range_in_bottom(*s, fst, lst, med))
-		while (!(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
-			do_ra(s);
+	med = get_size(*a) / 2;
+	if (find_range_in_bottom(*a, fst, lst, med))
+		while (!(get_top(*a)->nbr >= fst && get_top(*a)->nbr <= lst))
+			do_ra(a, b, f);
 	else
-		while (!(get_top(*s)->nbr >= fst && get_top(*s)->nbr <= lst))
-			do_rra(s);
+		while (!(get_top(*a)->nbr >= fst && get_top(*a)->nbr <= lst))
+			do_rra(a, b, f);
 }
 
-void	put_at_top_a(t_stack **s, int nbr)
+void	put_at_top_a(t_stack **a, t_stack **b, int nbr, t_flags *f)
 {
 	int	med;
 
-	if (get_size(*s) < 2 || get_top(*s)->nbr == nbr)
+	if (get_size(*a) < 2 || get_top(*a)->nbr == nbr)
 		return ;
-	med = get_size(*s) / 2;
-	if (find_nbr_in_bottom(*s, nbr, med))
-		while (get_top(*s)->nbr != nbr)
-			do_ra(s);
+	med = get_size(*a) / 2;
+	if (find_nbr_in_bottom(*a, nbr, med))
+		while (get_top(*a)->nbr != nbr)
+			do_ra(a, b, f);
 	else
-		while (get_top(*s)->nbr != nbr)
-			do_rra(s);
+		while (get_top(*a)->nbr != nbr)
+			do_rra(a, b, f);
 }
 
-void	put_at_top_b(t_stack **s, int nbr)
+void	put_at_top_b(t_stack **a, t_stack **b, int nbr, t_flags *f)
 {
 	int	med;
 
-	if (get_size(*s) < 2 || get_top(*s)->nbr == nbr)
+	if (get_size(*b) < 2 || get_top(*b)->nbr == nbr)
 		return ;
-	med = get_size(*s) / 2;
-	if (find_nbr_in_bottom(*s, nbr, med))
-		while (get_top(*s)->nbr != nbr)
-			do_rb(s);
+	med = get_size(*b) / 2;
+	if (find_nbr_in_bottom(*b, nbr, med))
+		while (get_top(*b)->nbr != nbr)
+			do_rb(a, b, f);
 	else
-		while (get_top(*s)->nbr != nbr)
-			do_rrb(s);
+		while (get_top(*b)->nbr != nbr)
+			do_rrb(a, b, f);
 }

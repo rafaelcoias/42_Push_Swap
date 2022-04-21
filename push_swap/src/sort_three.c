@@ -12,54 +12,54 @@
 
 #include "../include/push_swap.h"
 
-void	sort_three(t_stack **s)
+void	sort_three_a(t_stack **a, t_stack **b, t_flags *f)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_stack	*c;
+	t_stack	*x;
+	t_stack	*y;
+	t_stack	*z;
 
-	if (!(*s))
+	if (!(*a))
 		return ;
-	a = *s;
-	b = a->next;
-	c = b->next;
-	while (!is_sorted(s))
+	x = *a;
+	y = x->next;
+	z = y->next;
+	while (!is_sorted(a))
 	{
-		if ((a->nbr > b->nbr && a->nbr > c->nbr)
-			|| (a->nbr < b->nbr && a->nbr < c->nbr && b->nbr < c->nbr)
-			|| (c->nbr < b->nbr && c->nbr < a->nbr))
-			do_sa(s);
-		else if (c->nbr > b->nbr
-			&& c->nbr > a->nbr
-			&& b->nbr < a->nbr)
-			do_rra(s);
-		else if (a->nbr < b->nbr && a->nbr < c->nbr)
-			do_ra(s);
+		if ((x->nbr > y->nbr && x->nbr > z->nbr)
+			|| (x->nbr < y->nbr && x->nbr < z->nbr && y->nbr < z->nbr)
+			|| (z->nbr < y->nbr && z->nbr < x->nbr))
+			do_sa(a, b, f);
+		else if (z->nbr > y->nbr
+			&& z->nbr > x->nbr
+			&& y->nbr < x->nbr)
+			do_rra(a, b, f);
+		else if (x->nbr < y->nbr && x->nbr < z->nbr)
+			do_ra(a, b, f);
 	}
 }
 
-void	sort_three_b(t_stack **s)
+void	sort_three_b(t_stack **a, t_stack **b, t_flags *f)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_stack	*c;
+	t_stack	*x;
+	t_stack	*y;
+	t_stack	*z;
 
-	if (!(*s))
+	if (!(*b))
 		return ;
-	a = *s;
-	b = a->next;
-	c = b->next;
-	while (!is_sorted(s))
+	x = *b;
+	y = x->next;
+	z = y->next;
+	while (!is_sorted(b))
 	{
-		if ((a->nbr > b->nbr && a->nbr > c->nbr)
-			|| (a->nbr < b->nbr && a->nbr < c->nbr && b->nbr < c->nbr)
-			|| (c->nbr < b->nbr && c->nbr < a->nbr))
-			do_sb(s);
-		else if (c->nbr > b->nbr
-			&& c->nbr > a->nbr
-			&& b->nbr < a->nbr)
-			do_rrb(s);
-		else if (a->nbr < b->nbr && a->nbr < c->nbr)
-			do_rb(s);
+		if ((x->nbr > y->nbr && x->nbr > z->nbr)
+			|| (x->nbr < y->nbr && x->nbr < z->nbr && y->nbr < z->nbr)
+			|| (z->nbr < y->nbr && z->nbr < x->nbr))
+			do_sb(a, b, f);
+		else if (z->nbr > y->nbr
+			&& z->nbr > x->nbr
+			&& y->nbr < x->nbr)
+			do_rrb(a, b, f);
+		else if (x->nbr < y->nbr && x->nbr < z->nbr)
+			do_rb(a, b, f);
 	}
 }

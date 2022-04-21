@@ -12,27 +12,26 @@
 
 #include "../include/push_swap.h"
 
-void	sort_hundreds(t_stack **a, t_stack **b, int div)
+void	sort_hundreds(t_stack **a, t_stack **b, int div, t_flags *f)
 {
-	int	smallest;
-	int	add;
+	int	v[2];
 
-	smallest = get_smallest(*a);
-	add = get_biggest(*a) / div;
-	while (smallest < get_biggest(*a))
+	v[0] = get_smallest(*a);
+	v[1] = get_biggest(*a) / div;
+	while (v[0] < get_biggest(*a))
 	{
-		while (find_range_in_stack(*a, smallest, smallest + add))
+		while (find_range_in_stack(*a, v[0], v[0] + v[1]))
 		{
-			put_range_at_top_a(a, smallest, smallest + add);
-			do_pb(a, b);
+			put_range_top_a(a, b, v, f);
+			do_pb(a, b, f);
 		}
-		smallest += add;
+		v[0] += v[1];
 	}
 	while (get_size(*a))
-		do_pb(a, b);
+		do_pb(a, b, f);
 	while (get_size(*b))
 	{
-		put_at_top_b(b, get_biggest(*b));
-		do_pa(a, b);
+		put_at_top_b(a, b, get_biggest(*b), f);
+		do_pa(a, b, f);
 	}
 }

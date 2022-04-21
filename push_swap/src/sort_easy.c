@@ -72,12 +72,12 @@ static int	is_semi_sorted_bottom(t_stack **a)
 	return (0);
 }
 
-void	sort_easy(t_stack **a)
+void	sort_easy(t_stack **a, t_stack **b, t_flags *f)
 {
 	if (is_semi_sorted_bottom(a))
-		return (put_at_top_a(a, get_smallest(*a)));
+		return (put_at_top_a(a, b, get_smallest(*a), f));
 	if (sort_last_two(a))
-		return (do_sa(a));
+		return (do_sa(a, b, f));
 	if (is_sorted(&(*a)->next))
-		return (do_ra(a));
+		return (do_ra(a, b, f));
 }

@@ -12,27 +12,27 @@
 
 #include "../include/push_swap.h"
 
-void	sort_five(t_stack **a, t_stack **b)
+void	sort_five(t_stack **a, t_stack **b, t_flags *f)
 {
 	while (get_size(*a) > 3)
-		do_pb(a, b);
-	sort_three(a);
+		do_pb(a, b, f);
+	sort_three_a(a, b, f);
 	if (get_size(*b) == 3)
-		sort_three_b(b);
+		sort_three_b(a, b, f);
 	else
-		sort_two_b(b);
+		sort_two_b(a, b, f);
 	while (get_size(*b) > 0)
 	{
 		if (get_biggest(*a) < get_top(*b)->nbr)
 		{
-			do_pa(a, b);
-			do_rra(a);
+			do_pa(a, b, f);
+			do_rra(a, b, f);
 			continue ;
 		}
 		if (get_top(*b)->nbr > get_top(*a)->nbr)
-			do_rra(a);
+			do_rra(a, b, f);
 		else
-			do_pa(a, b);
+			do_pa(a, b, f);
 	}
-	put_at_top_a(a, get_smallest(*a));
+	put_at_top_a(a, b, get_smallest(*a), f);
 }
