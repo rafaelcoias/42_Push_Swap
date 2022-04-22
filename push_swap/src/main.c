@@ -94,7 +94,7 @@ int	main(int argc, char **argv)
 	b = NULL;
 	f = init_flags();
 	fst = 1;
-	if (argv[0][2] == 'c')
+	if (!ft_strcmp(argv[0], "tester"))
 		fst = check_args(argc, argv, &f);
 	else
 		check_args(argc, argv, &f);
@@ -106,7 +106,7 @@ int	main(int argc, char **argv)
 	if (!is_sorted(&a))
 		sort(argc - fst, a, b, f);
 	free_stack(&a);
-	if (argv[0][2] == 'c')
+	if (!ft_strcmp(argv[0], "tester"))
 		checker(argc - fst, f);
 	free(f);
 	return (0);

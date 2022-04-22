@@ -1,6 +1,6 @@
 NAME = push_swap
 
-CHECK = checker
+CHECK = tester
 
 HEAD = ./include
 
