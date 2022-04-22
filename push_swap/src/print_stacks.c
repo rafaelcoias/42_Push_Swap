@@ -33,52 +33,44 @@ static void	spaces(int total)
 		ft_putchar_fd(' ', 1);
 }
 
-void	print_a_bigger(t_stack *a, t_stack *b, t_flags *f)
+static void	print_a_bigger(t_stack *a, t_stack *b)
 {
 	if (!a && !b)
 		return ;
-	if (a->next)
+	while (a)
 	{
-		if (b)
-			print_stack_a_and_b(a->next, b->next, 0, f);
-		else
-			print_stack_a_and_b(a->next, b, 0, f);
 		spaces(11 - ft_strlen(ft_itoa(a->nbr)));
 		ft_putnbr_fd(a->nbr, 1);
 		if (b)
 		{
 			spaces(16 - ft_strlen(ft_itoa(b->nbr)));
 			ft_putnbr_fd(b->nbr, 1);
+			b = b->next;
 		}
 		ft_putchar_fd('\n', 1);
+		a = a->next;
 	}
-	else
-		print_a_bigger_handler(a, b);
 }
 
-void	print_b_bigger(t_stack *a, t_stack *b, t_flags *f)
+static void	print_b_bigger(t_stack *a, t_stack *b)
 {
 	if (!a && !b)
 		return ;
-	if (b->next)
+	while (b)
 	{
 		if (a)
 		{
-			print_stack_a_and_b(a->next, b->next, 0, f);
 			spaces(11 - ft_strlen(ft_itoa(a->nbr)));
 			ft_putnbr_fd(a->nbr, 1);
+			a = a->next;
 		}
 		else
-		{
-			print_stack_a_and_b(a, b->next, 0, f);
 			spaces(11);
-		}
 		spaces(16 - ft_strlen(ft_itoa(b->nbr)));
 		ft_putnbr_fd(b->nbr, 1);
 		ft_putchar_fd('\n', 1);
+		b = b->next;
 	}
-	else
-		print_b_bigger_handler(a, b);
 }
 
 void	print_stack_a_and_b(t_stack *a, t_stack *b, int first, t_flags *f)
@@ -93,9 +85,9 @@ void	print_stack_a_and_b(t_stack *a, t_stack *b, int first, t_flags *f)
 			ft_putstr_fd("\nStacks :\n\n", 1);
 	}
 	if (get_size(a) >= get_size(b))
-		print_a_bigger(a, b, f);
+		print_a_bigger(a, b);
 	else
-		print_b_bigger(a, b, f);
+		print_b_bigger(a, b);
 	if (first)
 		print_stack_limit(f);
 }

@@ -25,10 +25,9 @@ typedef struct s_stack
 
 typedef struct s_flags
 {
-	int	view;
-	int	color;
-	int	iter;
-	int	count;
+	int		view;
+	int		color;
+	int		count;
 }	t_flags;
 
 /* PROGRAM INIT */
@@ -52,18 +51,15 @@ void		do_rrr(t_stack **a, t_stack **b, t_flags *f);
 
 /* GET FUNCTIONS */
 
-t_stack		*get_top(t_stack *s);
 int			get_size(t_stack *s);
 int			get_biggest(t_stack *s);
 int			get_smallest(t_stack *s);
 
 /* FIND FUNCTIONS */
 
-int			find_nbr_in_stack(t_stack *s, int nbr);
 int			find_range_in_stack(t_stack *s, int first, int last);
 int			find_nbr_in_bottom(t_stack *s, int n, int med);
 int			find_range_in_bottom(t_stack *s, int fst, int lst, int med);
-int			find_smallest_in_range(int fst, int lst);
 
 /* ADD & REMOVE FUNCTIONS */
 
@@ -92,9 +88,5 @@ void		put_at_top_b(t_stack **a, t_stack **b, int nbr, t_flags *f);
 /* PRINT STACKS FUNCTIONS */
 
 void		print_stack_a_and_b(t_stack *a, t_stack *b, int first, t_flags *f);
-void		print_a_bigger(t_stack *a, t_stack *b, t_flags *f);
-void		print_b_bigger(t_stack *a, t_stack *b, t_flags *f);
-void		print_a_bigger_handler(t_stack *a, t_stack *b);
-void		print_b_bigger_handler(t_stack *a, t_stack *b);
 
 #endif

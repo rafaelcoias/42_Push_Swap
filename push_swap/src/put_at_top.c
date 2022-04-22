@@ -21,14 +21,14 @@ void	put_range_top_a(t_stack **a, t_stack **b, int v[2], t_flags *f)
 	fst = v[0];
 	lst = v[0] + v[1];
 	if (get_size(*a) < 2
-		|| (get_top(*a)->nbr >= fst && get_top(*a)->nbr <= lst))
+		|| ((*a)->nbr >= fst && (*a)->nbr <= lst))
 		return ;
 	med = get_size(*a) / 2;
 	if (find_range_in_bottom(*a, fst, lst, med))
-		while (!(get_top(*a)->nbr >= fst && get_top(*a)->nbr <= lst))
+		while (!((*a)->nbr >= fst && (*a)->nbr <= lst))
 			do_ra(a, b, f);
 	else
-		while (!(get_top(*a)->nbr >= fst && get_top(*a)->nbr <= lst))
+		while (!((*a)->nbr >= fst && (*a)->nbr <= lst))
 			do_rra(a, b, f);
 }
 
@@ -36,14 +36,14 @@ void	put_at_top_a(t_stack **a, t_stack **b, int nbr, t_flags *f)
 {
 	int	med;
 
-	if (get_size(*a) < 2 || get_top(*a)->nbr == nbr)
+	if (get_size(*a) < 2 || (*a)->nbr == nbr)
 		return ;
 	med = get_size(*a) / 2;
 	if (find_nbr_in_bottom(*a, nbr, med))
-		while (get_top(*a)->nbr != nbr)
+		while ((*a)->nbr != nbr)
 			do_ra(a, b, f);
 	else
-		while (get_top(*a)->nbr != nbr)
+		while ((*a)->nbr != nbr)
 			do_rra(a, b, f);
 }
 
@@ -51,13 +51,13 @@ void	put_at_top_b(t_stack **a, t_stack **b, int nbr, t_flags *f)
 {
 	int	med;
 
-	if (get_size(*b) < 2 || get_top(*b)->nbr == nbr)
+	if (get_size(*b) < 2 || (*b)->nbr == nbr)
 		return ;
 	med = get_size(*b) / 2;
 	if (find_nbr_in_bottom(*b, nbr, med))
-		while (get_top(*b)->nbr != nbr)
+		while ((*b)->nbr != nbr)
 			do_rb(a, b, f);
 	else
-		while (get_top(*b)->nbr != nbr)
+		while ((*b)->nbr != nbr)
 			do_rrb(a, b, f);
 }

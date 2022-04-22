@@ -50,12 +50,9 @@ static void	free_stack(t_stack **s)
 
 static void	checker(int argc, t_flags *f)
 {
-	if (f->iter)
-	{
-		ft_putstr_fd("\nNumber of moves : ", 1);
-		ft_putnbr_fd(f->count, 1);
-		ft_putchar_fd('\n', 1);
-	}
+	ft_putstr_fd("\nNumber of moves : ", 1);
+	ft_putnbr_fd(f->count, 1);
+	ft_putchar_fd('\n', 1);
 	if (argc <= 3 && f->count < 3)
 		ft_putstr_fd("\033[0;32mOK\033[0m\n", 1);
 	else if (argc <= 5 && f->count < 13)
@@ -70,6 +67,7 @@ static void	checker(int argc, t_flags *f)
 		ft_putstr_fd("\033[0;32mOK\033[0m\n", 1);
 	else
 		ft_putstr_fd("\033[0;31mKO\033[0m\n", 1);
+	ft_putchar_fd('\n', 1);
 }
 
 static t_flags	*init_flags(void)
@@ -81,7 +79,6 @@ static t_flags	*init_flags(void)
 		return (NULL);
 	new->view = 0;
 	new->color = 0;
-	new->iter = 0;
 	new->count = 0;
 	return (new);
 }

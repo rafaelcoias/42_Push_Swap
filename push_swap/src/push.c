@@ -14,15 +14,21 @@
 
 void	push(t_stack **a, t_stack **b)
 {
-	if (!b || get_size(*b) == 0)
+	t_stack	*aux_a;
+	t_stack	*aux_b;
+
+	if (!a)
 		return ;
-	ft_add_top(a, get_top(*b));
-	ft_rm_top(b);
+	aux_a = (*a)->next;
+	aux_b = *a;
+	*a = aux_a;
+	aux_b->next = *b;
+	*b = aux_b;
 }
 
 void	do_pa(t_stack **a, t_stack **b, t_flags *f)
 {
-	push(a, b);
+	push(b, a);
 	write(1, "pa\n", 3);
 	f->count = f->count + 1;
 	if (f->view)
@@ -31,7 +37,7 @@ void	do_pa(t_stack **a, t_stack **b, t_flags *f)
 
 void	do_pb(t_stack **a, t_stack **b, t_flags *f)
 {
-	push(b, a);
+	push(a, b);
 	write(1, "pb\n", 3);
 	f->count = f->count + 1;
 	if (f->view)

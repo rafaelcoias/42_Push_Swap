@@ -33,7 +33,7 @@ int	is_sorted(t_stack **s)
 	aux = *s;
 	while (aux)
 	{
-		if (aux->next && aux->next->nbr > aux->nbr)
+		if (aux->next && aux->next->nbr < aux->nbr)
 			return (0);
 		aux = aux->next;
 	}

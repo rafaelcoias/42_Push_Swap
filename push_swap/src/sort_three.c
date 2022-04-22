@@ -20,9 +20,9 @@ void	sort_three_a(t_stack **a, t_stack **b, t_flags *f)
 
 	if (!(*a))
 		return ;
-	x = *a;
-	y = x->next;
-	z = y->next;
+	z = *a;
+	y = z->next;
+	x = y->next;
 	while (!is_sorted(a))
 	{
 		if ((x->nbr > y->nbr && x->nbr > z->nbr)
@@ -32,9 +32,9 @@ void	sort_three_a(t_stack **a, t_stack **b, t_flags *f)
 		else if (z->nbr > y->nbr
 			&& z->nbr > x->nbr
 			&& y->nbr < x->nbr)
-			do_rra(a, b, f);
-		else if (x->nbr < y->nbr && x->nbr < z->nbr)
 			do_ra(a, b, f);
+		else if (x->nbr < y->nbr && x->nbr < z->nbr)
+			do_rra(a, b, f);
 	}
 }
 
@@ -46,9 +46,9 @@ void	sort_three_b(t_stack **a, t_stack **b, t_flags *f)
 
 	if (!(*b))
 		return ;
-	x = *b;
-	y = x->next;
-	z = y->next;
+	z = *b;
+	y = z->next;
+	x = y->next;
 	while (!is_sorted(b))
 	{
 		if ((x->nbr > y->nbr && x->nbr > z->nbr)
@@ -58,8 +58,8 @@ void	sort_three_b(t_stack **a, t_stack **b, t_flags *f)
 		else if (z->nbr > y->nbr
 			&& z->nbr > x->nbr
 			&& y->nbr < x->nbr)
-			do_rrb(a, b, f);
-		else if (x->nbr < y->nbr && x->nbr < z->nbr)
 			do_rb(a, b, f);
+		else if (x->nbr < y->nbr && x->nbr < z->nbr)
+			do_rrb(a, b, f);
 	}
 }

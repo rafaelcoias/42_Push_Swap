@@ -23,39 +23,3 @@ t_stack	*ft_add(int n)
 	new->next = NULL;
 	return (new);
 }
-
-void	ft_add_top(t_stack **s, t_stack *new)
-{
-	t_stack	*result;
-
-	result = *s;
-	if (!s)
-		return ;
-	if (!(*s))
-		result = new;
-	else
-	{
-		while ((*s)->next)
-			*s = (*s)->next;
-		(*s)->next = new;
-	}
-	*s = result;
-}
-
-void	ft_rm_top(t_stack **s)
-{
-	t_stack	*result;
-
-	result = *s;
-	if (!s || !(*s))
-		return ;
-	if (get_size(*s) == 1)
-	{
-		*s = NULL;
-		return ;
-	}
-	while ((*s)->next->next)
-		*s = (*s)->next;
-	(*s)->next = NULL;
-	*s = result;
-}

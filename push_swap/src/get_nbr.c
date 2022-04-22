@@ -12,15 +12,6 @@
 
 #include "../include/push_swap.h"
 
-t_stack	*get_top(t_stack *s)
-{
-	if (!s)
-		return (NULL);
-	while (s->next)
-		s = s->next;
-	return (s);
-}
-
 int	get_size(t_stack *s)
 {
 	int	i;

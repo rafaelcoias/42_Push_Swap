@@ -56,27 +56,3 @@ int	find_range_in_bottom(t_stack *s, int fst, int lst, int med)
 	}
 	return (0);
 }
-
-int	find_nbr_in_stack(t_stack *s, int nbr)
-{
-	if (!s)
-		return (0);
-	while (s->next)
-	{
-		if (s->nbr == nbr)
-			return (1);
-		s = s->next;
-	}
-	return (0);
-}
-
-int	find_smallest_in_range(int fst, int lst)
-{
-	int	min;
-
-	min = fst;
-	while (++fst != lst + 1)
-		if (min < fst)
-			min = fst;
-	return (min);
-}

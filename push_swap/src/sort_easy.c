@@ -19,7 +19,7 @@ static int	sort_last_two(t_stack **a)
 	aux = *a;
 	while (aux->next->next)
 	{
-		if (aux->next && aux->next->nbr > aux->nbr)
+		if (aux->next && aux->next->nbr < aux->nbr)
 			return (0);
 		aux = aux->next;
 	}
@@ -36,7 +36,7 @@ static int	top_bigger_than_bottom(t_stack *bott, t_stack *top)
 		top = first_top;
 		while (top)
 		{
-			if (top->nbr < bott->nbr)
+			if (top->nbr > bott->nbr)
 				return (0);
 			top = top->next;
 		}
@@ -51,7 +51,7 @@ static int	is_semi_sorted_top(t_stack **a, t_stack *s)
 		return (0);
 	while (s->next)
 	{
-		if (s->next->nbr > s->nbr)
+		if (s->next->nbr < s->nbr)
 			return (0);
 		s = s->next;
 	}
@@ -65,7 +65,7 @@ static int	is_semi_sorted_bottom(t_stack **a)
 	aux = *a;
 	while (aux->next)
 	{
-		if (aux->next->nbr > aux->nbr)
+		if (aux->next->nbr < aux->nbr)
 			return (is_semi_sorted_top(a, aux->next));
 		aux = aux->next;
 	}
@@ -78,6 +78,4 @@ void	sort_easy(t_stack **a, t_stack **b, t_flags *f)
 		return (put_at_top_a(a, b, get_smallest(*a), f));
 	if (sort_last_two(a))
 		return (do_sa(a, b, f));
-	if (is_sorted(&(*a)->next))
-		return (do_ra(a, b, f));
 }

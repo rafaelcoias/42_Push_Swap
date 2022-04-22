@@ -20,23 +20,20 @@ static void	send_message(void)
 
 static int	check_arg(char *arg)
 {
-	int	max;
 	int	min;
+	int	max;
 
-	max = 2147483647;
 	min = -2147483648;
-	if (arg[0] == '0')
+	max = 2147483647;
+	if (!ft_strcmp(arg, "0"))
 		return (1);
 	if (ft_atol(arg) == 0 || ft_atol(arg) > max || ft_atol(arg) < min)
 		return (0);
 	return (1);
 }
 
-static int	check_duplicate(int argc, char **argv, int j)
+static int	check_duplicate(int argc, char **argv, int i, int j)
 {
-	int	i;
-
-	i = 1;
 	while (i != argc)
 	{
 		if (i != j && ft_atol(argv[i]) == ft_atol(argv[j]))
@@ -46,24 +43,22 @@ static int	check_duplicate(int argc, char **argv, int j)
 	return (1);
 }
 
-static int	check_flags(char **argv, int i, t_flags **f)
+static int	check_flags(int argc, char **argv, int i, t_flags **f)
 {
-	if (!ft_strcmp(argv[1], "-v") || !ft_strcmp(argv[2], "-v")
-		|| !ft_strcmp(argv[3], "-v"))
+	if (argc > 1 && (!ft_strcmp(argv[1], "-v") || !ft_strcmp(argv[1], "-c")))
 	{
-		(*f)->view = 1;
+		if (!ft_strcmp(argv[1], "-v"))
+			(*f)->view = 1;
+		if (!ft_strcmp(argv[1], "-c"))
+			(*f)->color = 1;
 		i++;
 	}
-	if (!ft_strcmp(argv[1], "-c") || !ft_strcmp(argv[2], "-c")
-		|| !ft_strcmp(argv[3], "-c"))
+	if (argc > 2 && (!ft_strcmp(argv[2], "-v") || !ft_strcmp(argv[2], "-c")))
 	{
-		(*f)->color = 1;
-		i++;
-	}
-	if (!ft_strcmp(argv[1], "-i") || !ft_strcmp(argv[2], "-i")
-		|| !ft_strcmp(argv[3], "-i"))
-	{
-		(*f)->iter = 1;
+		if (!ft_strcmp(argv[2], "-v"))
+			(*f)->view = 1;
+		if (!ft_strcmp(argv[2], "-c"))
+			(*f)->color = 1;
 		i++;
 	}
 	return (i);
@@ -77,13 +72,14 @@ int	check_args(int argc, char **argv, t_flags **f)
 	i = 1;
 	if (argc == 1)
 		exit(0);
-	i = check_flags(argv, i, f);
+	if (argv[0][2] == 'c')
+		i = check_flags(argc, argv, i, f);
 	fst = i;
 	while (i != argc)
 	{
 		if (!check_arg(argv[i]))
 			send_message();
-		if (!check_duplicate(argc, argv, i))
+		if (!check_duplicate(argc, argv, fst, i))
 			send_message();
 		i++;
 	}

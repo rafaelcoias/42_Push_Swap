@@ -18,7 +18,7 @@ void	sort_hundreds(t_stack **a, t_stack **b, int div, t_flags *f)
 
 	v[0] = get_smallest(*a);
 	v[1] = get_biggest(*a) / div;
-	while (v[0] < get_biggest(*a))
+	while (get_size(*a) && v[0] < get_biggest(*a))
 	{
 		while (find_range_in_stack(*a, v[0], v[0] + v[1]))
 		{

@@ -15,15 +15,10 @@
 static void	swap(t_stack **s)
 {
 	int		aux;
-	t_stack	*result;
 
-	result = *s;
-	while ((*s)->next->next)
-		*s = (*s)->next;
 	aux = (*s)->nbr;
 	(*s)->nbr = (*s)->next->nbr;
 	(*s)->next->nbr = aux;
-	*s = result;
 }
 
 void	do_sa(t_stack **a, t_stack **b, t_flags *f)
