@@ -4,7 +4,7 @@ CHECK = checker
 
 HEAD = ./include
 
-SRC = ./src/main.c ./src/check.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rv_rotate.c ./src/add_remove.c ./src/get_nbr.c ./src/put_at_top.c ./src/find_nbr.c ./src/sort.c ./src/sort_easy.c ./src/sort_two.c ./src/sort_three.c ./src/sort_five.c ./src/sort_hundreds.c ./src/print_stacks.c 
+SRC = ./src/main.c ./src/check.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rv_rotate.c ./src/add.c ./src/get_nbr.c ./src/put_at_top.c ./src/find_nbr.c ./src/sort.c ./src/sort_easy.c ./src/sort_two.c ./src/sort_three.c ./src/sort_five.c ./src/sort_hundreds.c ./src/print_stacks.c 
 
 MAKE_LIBFT = cd ./include/libft && make all
 
@@ -14,7 +14,7 @@ OBJ = ${SRC:.c=.o}
 
 GCC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror 
 
 RM = rm -f
 
@@ -50,7 +50,7 @@ fclean: clean
 	@echo "\n ======= $(RED)push_swap removed$(RESET) ======= \n"
 	
 
-re:	fclean all checker
+re:	fclean all
 
 norm:
 	@echo "\n ======= $(YELLOW)norm libft$(RESET) ======= \n"

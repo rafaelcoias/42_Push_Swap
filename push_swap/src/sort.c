@@ -21,9 +21,9 @@ void	sort(int argc, t_stack *a, t_stack *b, t_flags *f)
 	else if (argc <= 6)
 		sort_five(&a, &b, f);
 	else if (argc <= 100)
-		sort_hundreds(&a, &b, 5, f);
+		sort_hundreds(&a, &b, 3, f);
 	else if (argc <= 500)
-		sort_hundreds(&a, &b, 11, f);
+		sort_hundreds(&a, &b, 7, f);
 }
 
 int	is_sorted(t_stack **s)

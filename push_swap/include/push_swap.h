@@ -61,11 +61,9 @@ int			find_range_in_stack(t_stack *s, int first, int last);
 int			find_nbr_in_bottom(t_stack *s, int n, int med);
 int			find_range_in_bottom(t_stack *s, int fst, int lst, int med);
 
-/* ADD & REMOVE FUNCTIONS */
+/* ADD FUNCTION */
 
 t_stack		*ft_add(int n);
-void		ft_add_top(t_stack **s, t_stack *new);
-void		ft_rm_top(t_stack **s);
 
 /* SORT FUNCTIONS */
 
@@ -85,7 +83,7 @@ void		put_range_top_a(t_stack **a, t_stack **b, int *v, t_flags *f);
 void		put_at_top_a(t_stack **a, t_stack **b, int nbr, t_flags *f);
 void		put_at_top_b(t_stack **a, t_stack **b, int nbr, t_flags *f);
 
-/* PRINT STACKS FUNCTIONS */
+/* PRINT STACKS FUNCTION */
 
 void		print_stack_a_and_b(t_stack *a, t_stack *b, int first, t_flags *f);
 
