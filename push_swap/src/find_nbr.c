@@ -31,11 +31,11 @@ int	find_nbr_in_bottom(t_stack *s, int n, int med)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (s && i <= med)
 	{
 		if (s->nbr == n)
-			return (i);
+			return (1);
 		i++;
 		s = s->next;
 	}
