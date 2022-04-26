@@ -67,7 +67,7 @@ t_stack		*ft_add(int n);
 
 /* SORT FUNCTIONS */
 
-void		sort(int argc, t_stack *a, t_stack *b, t_flags *f);
+void		sort(int argc, t_stack **a, t_stack **b, t_flags *f);
 void		sort_easy(t_stack **a, t_stack **b, t_flags *f);
 void		sort_two_a(t_stack **a, t_stack **b, t_flags *f);
 void		sort_two_b(t_stack **a, t_stack **b, t_flags *f);

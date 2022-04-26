@@ -72,7 +72,7 @@ int	check_args(int argc, char **argv, t_flags **f)
 	i = 1;
 	if (argc == 1)
 		exit(0);
-	if (!ft_strcmp(argv[0], "tester"))
+	if (!ft_strcmp(argv[0], "./tester"))
 		i = check_flags(argc, argv, i, f);
 	fst = i;
 	while (i != argc)

@@ -93,20 +93,16 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	f = init_flags();
-	fst = 1;
-	if (!ft_strcmp(argv[0], "tester"))
-		fst = check_args(argc, argv, &f);
-	else
-		check_args(argc, argv, &f);
+	fst = check_args(argc, argv, &f);
 	a = t_stack_a(argv, argc, fst);
 	if (f->view)
 		print_stack_a_and_b(a, b, 1, f);
 	if (!is_sorted(&a))
 		sort_easy(&a, &b, f);
 	if (!is_sorted(&a))
-		sort(argc - fst, a, b, f);
+		sort(argc - fst, &a, &b, f);
 	free_stack(&a);
-	if (!ft_strcmp(argv[0], "tester"))
+	if (!ft_strcmp(argv[0], "./tester"))
 		checker(argc - fst, f);
 	free(f);
 	return (0);
