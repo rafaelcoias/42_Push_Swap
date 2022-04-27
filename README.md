@@ -15,6 +15,14 @@ Write a program in C called push_swap which calculates and displays
 on the standard output the smallest program, made of Push swap language instructions,
 that sorts the integers received as arguments.
 
+## Push_Swap moves
+
+<details><summary>See every push_swap rule bellow</summary>
+  
+![image](https://user-images.githubusercontent.com/91686183/165549313-24f49d35-f179-4dce-89c1-74a14210702b.png)
+ 
+</details>
+
 ## What you need to know before starting push_swap
 
 ### C Structures
@@ -31,18 +39,18 @@ Obviously, you have to do a little search and learn about algorithms. That way y
 
 You can create your own. But probably it already exists and you can get help from the web.
 
-## Checker | Visualizer
+Here is an example of a <a href="https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a">push_swap</a> algorithm.
+
+### Checker | Visualizer
 
 I made my own checker and I thing it is very helpful to understand how the stacks work. It is an easy bonus.
 
-If you don't want to do it yourself, you can use my <a href="https://techvidvan.com/tutorials/c-typedef-with-examples/">print_stacks.c</a> file to visualize your stacks. You have to remove <i>t_flags *f</i> for that to work.
+If you don't want to do it yourself, you can use my <a href="https://github.com/rafaelcoias/42_Push_Swap/tree/main/push_swap/src">print_stacks.c</a> file to visualize your stacks. You have to remove <i>t_flags *f</i> for that to work.
 
-I recommend <a href="https://techvidvan.com/tutorials/c-typedef-with-examples/">this</a> checker to see how good your algorithm is. It was my favourite.
+I recommend <a href="https://github.com/LeoFu9487/push_swap_tester">this</a> checker to see how good your algorithm is. It was my favourite.
 
 <hr>
 
-I hope you found it interesting!
-
-Learn how to do the push_swap algorithm <a href="https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a">here</a>.
+I hope you found this script interesting!
 
 And if you are going to do push_swap, I wish you good luck and hope that you learned something here!
