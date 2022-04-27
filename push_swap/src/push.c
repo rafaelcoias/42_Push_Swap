@@ -28,18 +28,32 @@ void	push(t_stack **a, t_stack **b)
 
 void	do_pa(t_stack **a, t_stack **b, t_flags *f)
 {
+	char	n;
+
 	push(b, a);
 	write(1, "pa\n", 3);
 	f->count = f->count + 1;
 	if (f->view)
 		print_stack_a_and_b(*a, *b, 1, f);
+	if (f->debug)
+	{
+		ft_putstr_fd("         \033[0;33m(continue)\033[0m", 1);
+		scanf("%c", &n);
+	}
 }
 
 void	do_pb(t_stack **a, t_stack **b, t_flags *f)
 {
+	char	n;
+
 	push(a, b);
 	write(1, "pb\n", 3);
 	f->count = f->count + 1;
 	if (f->view)
 		print_stack_a_and_b(*a, *b, 1, f);
+	if (f->debug)
+	{
+		ft_putstr_fd("         \033[0;33m(continue)\033[0m", 1);
+		scanf("%c", &n);
+	}
 }

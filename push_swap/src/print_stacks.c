@@ -35,18 +35,23 @@ static void	spaces(int total)
 
 static void	print_a_bigger(t_stack *a, t_stack *b)
 {
-	if (!a && !b)
-		return ;
+	int	i;
+	int	size;
+
+	i = get_size(a);
+	size = get_size(b);
 	while (a)
 	{
 		spaces(11 - ft_strlen(ft_itoa(a->nbr)));
 		ft_putnbr_fd(a->nbr, 1);
-		if (b)
+		if (i == size)
 		{
 			spaces(16 - ft_strlen(ft_itoa(b->nbr)));
 			ft_putnbr_fd(b->nbr, 1);
 			b = b->next;
+			i++;
 		}
+		i--;
 		ft_putchar_fd('\n', 1);
 		a = a->next;
 	}
@@ -54,18 +59,23 @@ static void	print_a_bigger(t_stack *a, t_stack *b)
 
 static void	print_b_bigger(t_stack *a, t_stack *b)
 {
-	if (!a && !b)
-		return ;
+	int	i;
+	int	size;
+
+	i = get_size(b);
+	size = get_size(a);
 	while (b)
 	{
-		if (a)
+		if (i == size)
 		{
 			spaces(11 - ft_strlen(ft_itoa(a->nbr)));
 			ft_putnbr_fd(a->nbr, 1);
 			a = a->next;
+			i++;
 		}
 		else
 			spaces(11);
+		i--;
 		spaces(16 - ft_strlen(ft_itoa(b->nbr)));
 		ft_putnbr_fd(b->nbr, 1);
 		ft_putchar_fd('\n', 1);

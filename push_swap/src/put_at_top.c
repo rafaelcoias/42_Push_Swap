@@ -41,9 +41,9 @@ static int	mv_a(t_stack **a, t_stack **b, t_flags *f, char *mv_a)
 		do_rrr(a, b, f);
 		return (0);
 	}
-	if (!ft_strcmp(mv_a, "ra") && !ft_strcmp(mv_b, "rrb"))
+	if (!ft_strcmp(mv_b, "rrb"))
 		do_rrb(a, b, f);
-	if (!ft_strcmp(mv_a, "rra") && !ft_strcmp(mv_b, "rb"))
+	if (!ft_strcmp(mv_b, "rb"))
 		do_rb(a, b, f);
 	return (1);
 }
@@ -60,7 +60,7 @@ void	put_range_top_a(t_stack **a, t_stack **b, int v[2], t_flags *f)
 		|| ((*a)->nbr >= fst && (*a)->nbr <= lst))
 		return ;
 	med = get_size(*a) / 2;
-	if (find_range_in_bottom(*a, fst, lst, med))
+	if (find_range_in_top(*a, fst, lst, med))
 	{
 		while (!((*a)->nbr >= fst && (*a)->nbr <= lst))
 			if (mv_a(a, b, f, "ra"))

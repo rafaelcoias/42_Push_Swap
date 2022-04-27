@@ -42,7 +42,7 @@ int	find_nbr_in_bottom(t_stack *s, int n, int med)
 	return (0);
 }
 
-int	find_range_in_bottom(t_stack *s, int fst, int lst, int med)
+int	find_range_in_top(t_stack *s, int fst, int lst, int med)
 {
 	int	i;
 

@@ -28,28 +28,49 @@ static void	rotate(t_stack **s)
 
 void	do_ra(t_stack **a, t_stack **b, t_flags *f)
 {
+	char	n;
+
 	rotate(a);
 	write(1, "ra\n", 3);
 	f->count = f->count + 1;
 	if (f->view)
 		print_stack_a_and_b(*a, *b, 1, f);
+	if (f->debug)
+	{
+		ft_putstr_fd("         \033[0;33m(continue)\033[0m", 1);
+		scanf("%c", &n);
+	}
 }
 
 void	do_rb(t_stack **a, t_stack **b, t_flags *f)
 {
+	char	n;
+
 	rotate(b);
 	write(1, "rb\n", 3);
 	f->count = f->count + 1;
 	if (f->view)
 		print_stack_a_and_b(*a, *b, 1, f);
+	if (f->debug)
+	{
+		ft_putstr_fd("         \033[0;33m(continue)\033[0m", 1);
+		scanf("%c", &n);
+	}
 }
 
 void	do_rr(t_stack **a, t_stack **b, t_flags *f)
 {
+	char	n;
+
 	rotate(a);
 	rotate(b);
 	write(1, "rr\n", 3);
 	f->count = f->count + 1;
 	if (f->view)
 		print_stack_a_and_b(*a, *b, 1, f);
+	if (f->debug)
+	{
+		ft_putstr_fd("         \033[0;33m(continue)\033[0m", 1);
+		scanf("%c", &n);
+	}
 }
