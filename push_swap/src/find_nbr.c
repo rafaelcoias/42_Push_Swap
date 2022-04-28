@@ -46,7 +46,7 @@ int	find_range_in_top(t_stack *s, int fst, int lst, int med)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (s && i <= med)
 	{
 		if (s->nbr >= fst && s->nbr <= lst)
@@ -54,5 +54,5 @@ int	find_range_in_top(t_stack *s, int fst, int lst, int med)
 		i++;
 		s = s->next;
 	}
-	return (0);
+	return (-1);
 }

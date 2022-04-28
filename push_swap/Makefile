@@ -2,7 +2,7 @@
 
 NAME = push_swap
 
-CHECK = tester
+CHECK = checker
 
 ########## 		  SOURCES 		##########
 
@@ -23,9 +23,6 @@ LIBFT_PATH = ./include/libft
 OBJ = ${SRC:.c=.o}
 
 CC = gcc
-
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${HEAD}
 
 ########## 		   FLAGS 		##########
 
@@ -48,13 +45,19 @@ CLEAN_LIBFT = cd ${LIBFT_PATH} && make clean -s
 
 FCLEAN_LIBFT = cd ${LIBFT_PATH} && make fclean -s
 
-NORM_LIBFT = cd ${LIBFT_PATH} && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
-
-NORM_PROJECT = cd ./src && norminette -R CheckForbiddenSourceHeader *.c && cd ../include && norminette -R CheckDefine *.h
-
-ECHO = echo
-
 RM = rm -f
+
+########## 		  MESSAGES 		##########
+
+CREATE_PROJ_MSG = @echo "\n<========== $(GREEN)$(NAME) created$(RESET) ==========>\n"
+
+CREATE_BONUS_MSG = @echo "\n<========== $(GREEN)$(CHECK) created$(RESET) ==========>\n"
+
+REMOVED_MSG = @echo "\n<========== $(RED)$(NAME) removed$(RESET) ==========>\n"
+
+NORM_LIBFT_MSG = @echo "\n<========== $(YELLOW)Norm $(LIBFT)$(RESET) ==========>\n"
+
+NORM_PROJ_MSG = @echo "\n<========== $(YELLOW)Norm $(NAME)$(RESET) ==========>\n"
 
 ########## 		  TARGETS 		##########
 
@@ -69,10 +72,10 @@ ${CHECK}: ${OBJ}
 ########## 		   RULES 		##########
 
 all: ${NAME} 
-	${ECHO} "\n<======= $(GREEN)$(NAME) created$(RESET) =======>\n"
+	${CREATE_PROJ_MSG}
 
-checker: ${CHECK}
-	${ECHO} "\n<======= $(GREEN)$(CHECK) created$(RESET) =======>\n"
+bonus: ${CHECK}
+	${CREATE_BONUS_MSG}
 
 clean:
 	${CLEAN_LIBFT}
@@ -81,15 +84,15 @@ clean:
 fclean: clean 
 	${FCLEAN_LIBFT}
 	${RM} ${NAME} ${CHECK}
-	${ECHO} "\n<======= $(RED)$(NAME) removed$(RESET) ========>\n"
+	${REMOVED_MSG}
 	
 
 re:	fclean all
 
 norm:
-	${ECHO} "\n<======= $(YELLOW)Norm $(libft)$(RESET) =======>\n"
-	${NORM_LIBFT}
-	${ECHO} "\n<======= $(YELLOW)Norm $(NAME)$(RESET) =======>\n "
-	${NORM_PROJECT}
+	${NORM_LIBFT_MSG}
+	@cd ${LIBFT_PATH} && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
+	${NORM_PROJ_MSG}
+	@cd ./src && norminette -R CheckForbiddenSourceHeader *.c && cd ../include && norminette -R CheckDefine *.h
 
-.PHONY: all checker clean fclean re norm
+.PHONY: all bonus clean fclean re norm

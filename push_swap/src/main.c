@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 	if (!is_sorted(&a))
 		sort(argc - fst, &a, &b, f);
 	free_stack(&a);
-	if (!ft_strcmp(argv[0], "C:\\Users\\rafae\\Documents\\Programming\\Lisboa42\\42Cursus\\Projects\\ps_test\\push_swap\\tester.exe"))
+	if (!ft_strcmp(argv[0], "./checker"))
 		checker(argc - fst, f);
 	free(f);
 	return (0);

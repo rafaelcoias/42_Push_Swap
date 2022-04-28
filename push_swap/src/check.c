@@ -40,7 +40,7 @@ static int	check_duplicate(int argc, char **argv, int i, int j)
 static int	continue_check_flags(int argc, char **argv, int i, t_flags **f)
 {
 	if (argc > 3 && (!ft_strcmp(argv[3], "-v") || !ft_strcmp(argv[3], "-c")
-		|| !ft_strcmp(argv[3], "-d")))
+			|| !ft_strcmp(argv[3], "-d")))
 	{
 		if (!ft_strcmp(argv[3], "-v"))
 			(*f)->view = 1;
@@ -56,7 +56,7 @@ static int	continue_check_flags(int argc, char **argv, int i, t_flags **f)
 static int	check_flags(int argc, char **argv, int i, t_flags **f)
 {
 	if (argc > 1 && (!ft_strcmp(argv[1], "-v") || !ft_strcmp(argv[1], "-c")
-		|| !ft_strcmp(argv[1], "-d")))
+			|| !ft_strcmp(argv[1], "-d")))
 	{
 		if (!ft_strcmp(argv[1], "-v"))
 			(*f)->view = 1;
@@ -67,7 +67,7 @@ static int	check_flags(int argc, char **argv, int i, t_flags **f)
 		i++;
 	}
 	if (argc > 2 && (!ft_strcmp(argv[2], "-v") || !ft_strcmp(argv[2], "-c")
-		|| !ft_strcmp(argv[2], "-d")))
+			|| !ft_strcmp(argv[2], "-d")))
 	{
 		if (!ft_strcmp(argv[2], "-v"))
 			(*f)->view = 1;
@@ -89,7 +89,7 @@ int	check_args(int argc, char **argv, t_flags **f)
 	i = 1;
 	if (argc == 1)
 		exit(0);
-	if (!ft_strcmp(argv[0], "C:\\Users\\rafae\\Documents\\Programming\\Lisboa42\\42Cursus\\Projects\\ps_test\\push_swap\\tester.exe"))
+	if (!ft_strcmp(argv[0], "./checker"))
 		i = check_flags(argc, argv, i, f);
 	fst = i;
 	while (i != argc)

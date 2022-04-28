@@ -61,6 +61,7 @@ int			get_smallest(t_stack *s);
 int			find_range_in_stack(t_stack *s, int first, int last);
 int			find_nbr_in_bottom(t_stack *s, int n, int med);
 int			find_range_in_top(t_stack *s, int fst, int lst, int med);
+int			range_in_bot(t_stack *s, int fst, int lst, int med);
 
 /* ADD FUNCTION */
 
