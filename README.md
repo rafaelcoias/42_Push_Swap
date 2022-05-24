@@ -49,6 +49,12 @@ If you don't want to do it yourself, you can use my <a href="https://github.com/
 
 I recommend <a href="https://github.com/LeoFu9487/push_swap_tester">this</a> checker to see how good your algorithm is. It was my favourite.
 
+<details><summary>My grade</summary>
+  
+  ![image](https://user-images.githubusercontent.com/91686183/169928009-c78cfb3a-530a-43bc-bd72-be59350d7509.png)
+  
+</details>
+
 <hr>
 
 I hope you found this script interesting!
