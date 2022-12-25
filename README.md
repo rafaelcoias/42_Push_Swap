@@ -9,6 +9,13 @@ To succeed you’ll have to manipulate various
 types of algorithms and choose the most appropriate solution (out of many) for an
 optimized data sorting.
 
+## Skills Learned
+
+  - Imperative programming
+  - Rigor
+  - Unix
+  - Algorithms & AI
+
 ## Goal
 
 Write a program in C called push_swap which calculates and displays
